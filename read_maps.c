@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/11 19:27:10 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:30:29 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	line_nb(int fd, fdf_var *number)
 	
 	index = 0;
 	line  = get_next_line(fd);
-	number->colones_number = colone_nb(line);
+	number->colones = colone_nb(line);
 	while(line)
 	{
 		line = get_next_line(fd);
 		++index;
 	}
-	number->lines_number = index;
+	number->lines = index;
 	
 }
 //************************************** 2: colones number

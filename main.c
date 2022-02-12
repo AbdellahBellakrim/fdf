@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/12 00:31:31 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:29:30 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	alloc_function(fdf_var * number)
 	int		index;
 		
 	index = -1;
-	number->data_map = (map **)malloc(sizeof(map) * (number->lines_number + 1));
+	number->data_map = (map **)malloc(sizeof(map) * (number->lines + 1));
 	if(!number->data_map)
 		return(0);
-	while (++index < number->lines_number)
+	while (++index < number->lines)
 	{
-		number->data_map[index] = (map *)malloc(sizeof(map) * (number->colones_number + 1));
+		number->data_map[index] = (map *)malloc(sizeof(map) * (number->colones + 1));
 		if(!number->data_map[index])
 			return(free_function(index, number->data_map),0);
 	}

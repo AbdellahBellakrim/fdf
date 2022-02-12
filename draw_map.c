@@ -6,80 +6,87 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/12 01:11:29 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/12 17:06:11 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 //********************************************************* draw funtion
-void	draw_function(fdf_var *number)
+void	draw_function(fdf_var *vars)
 {
-	int height;
-	int weight;
+	int y;
+	int x;
 
-	height = 0;
-	while(height < number->lines_number)
+	y = 0;
+	vars->ptr = (mlx *)malloc(sizeof(mlx));
+	vars->ptr->mlx_ptr = mlx_init();
+	vars->ptr->window_ptr = mlx_new_window(vars->ptr->mlx_ptr, 2050, 1500, "fdf");
+	while(y < vars->lines)
 	{
-		weight = 0;
-		while(weight < number->colones_number)
+		x = 0;
+		while(x < vars->colones)
 		{
-			if(height < number->lines_number - 1)
+			if(y < vars->lines - 1)
 			{
-				number->x2 = weight + 1;
-				number->y2 = height;
-				// printf("\npoint:|%d,%d|------>",weight, height);
-				// printf("next:|%d,%d|\n", number->x2,number->y2);
-				dda_function(weight, height,number);
+				vars->x2 = x;
+				vars->y2 = y + 1;
+				dda_function(x, y,vars);
 			}
-			if(weight < number->colones_number - 1)
+			if(x < vars->colones - 1)
 			{
-				number->x2 = weight ;
-				number->y2 = height + 1;
-				// printf("\npoint:|%d,%d|------>",weight, height);
-				// printf("next:|%d,%d|\n", number->x2,number->y2);				
-				 dda_function(weight, height, number);
+				vars->x2 = x + 1 ;
+				vars->y2 = y;		
+				dda_function(x, y, vars);
 			}
-			weight++;
+			x++;
 		}
-		height++;
+		y++;
 	}
+	mlx_loop(vars->ptr->mlx_ptr);
 }
 //******************************************************** dda algorithm
-void	dda_function(int x1, int y1, fdf_var *number)
+void	dda_function(float x1, float y1, fdf_var *vars)
 {
-	int	dx;
-	int dy;
-	int steps;
+	int		color;
+	float 	z2;
+	float	dx;
+	float	dy;
+	float	steps;
+
+	color = vars->data_map[(int)y1][(int)x1].color;
+	z2 = vars->data_map[(int)vars->y2][(int)vars->x2].z;
+
+	//****************************************** 3D
+	x1 = (x1 - y1) * cos(0.84);
+	y1 = (x1 + y1) * sin(0.84) - vars->data_map[(int)y1][(int)x1].z;
+	vars->x2 = (vars->x2 - vars->y2) * cos(0.84);
+	vars->y2 = (vars->x2 + vars->y2) * sin(0.84) - z2;
 	
-	dx = number->x2 - x1;
-	dy = number->y2 - y1;
-	if(abs(dx) > abs(dy))
-		steps = abs(dx);
+	//***********************************zoom
+	x1 *= ZOOM;
+	y1 *= ZOOM;
+	vars->x2 *= ZOOM;
+	vars->y2 *= ZOOM;
+	
+	//*************************************** central
+	x1 += CENTRAL;
+	y1 += CENTRAL;
+	vars->x2 += CENTRAL;
+	vars->y2 += CENTRAL;
+
+	dx = vars->x2 - x1;
+	dy = vars->y2 - y1;
+
+	if(fabsf(dx) > fabsf(dy))
+		steps = fabsf(dx);
 	else
-		steps = abs(dy);
+		steps = fabsf(dy);
 	dx /= steps;
 	dy /= steps;
-	while((x1 - number->x2) || (y1 - number->y2))
+	while((int)(x1 - vars->x2) || (int)(y1 - vars->y2))
 	{
-		printf("\n|%d,%d|-->",x1, y1);
-		//mlx_graphic(x1, y1, number);
+		mlx_pixel_put(vars->ptr->mlx_ptr, vars->ptr->window_ptr, x1, y1, color);
 		x1 += dx;
 		y1 += dy;
-		printf("|%d,%d|\n",x1, y1);
-		
 	}
 }
-//********************************************************* function for graphic handling
-void	mlx_graphic(int x1, int y1, fdf_var *number)
-{
-	mlx	*ptr;
-	int color;
-
-	color = number->data_map[y1][x1].color;
-	ptr = (mlx *)malloc(sizeof(mlx));
-	ptr->mlx_ptr = mlx_init();
-	ptr->window_ptr = mlx_new_window(ptr->mlx_ptr, 1000, 1000, "fdf");
-	mlx_pixel_put(ptr->mlx_ptr, ptr->window_ptr, x1, y1, color);
-	mlx_loop(ptr->window_ptr);
-}
-// prblm in mlx 

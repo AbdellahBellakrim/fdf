@@ -6,32 +6,35 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/12 00:24:30 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/12 17:04:04 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef	FDF_H
 # define	FDF_H
+
 //****************************************** structs
 typedef struct map
 {
 	int z;
 	int	color;
 }map;
-typedef struct fdf_var
-{
-	int lines_number;
-	int colones_number;
-	int x2;
-	int y2;
-	map **data_map;
-} fdf_var;
 
 typedef struct mlx
 {
 	void *mlx_ptr;
 	void *window_ptr;
 }mlx;
+
+typedef struct fdf_var
+{
+	int lines;
+	int colones;
+	float x2;
+	float y2;
+	map **data_map;
+	mlx *ptr;
+} fdf_var;
 
 //********************************************** libs
 #include <mlx.h>
@@ -55,6 +58,9 @@ void	free_function(int index, map **tab);
 void	free_function2(int index, char **tab);
 int		alloc_function(fdf_var * number);
 void	draw_function(fdf_var *number);
-void	dda_function(int x1, int y1, fdf_var *number);
-void	mlx_graphic(int x1, int y1, fdf_var *number);
+void	dda_function(float x1, float y1, fdf_var *number);
+
+//*************************************************** macros
+# define ZOOM 25
+# define  CENTRAL 500
 #endif

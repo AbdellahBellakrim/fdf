@@ -6,7 +6,7 @@
 #    By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/04 18:13:59 by abellakr          #+#    #+#              #
-#    Updated: 2022/02/11 23:15:25 by abellakr         ###   ########.fr        #
+#    Updated: 2022/02/12 09:36:59 by abellakr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC = main.c read_maps.c utils.c draw_map.c
 all : $(NAME)
 
 $(NAME) :
-	make -C ./libft 
+	@make -C ./libft 
 	$(CC) $(CFlAGS) $(FRAMEWORKS) $(SRC) ./libft/libft.a -o $(NAME) -g 
 clean :
 	rm -rf $(NAME) 

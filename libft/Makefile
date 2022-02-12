@@ -6,7 +6,7 @@
 #    By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 19:21:12 by abellakr          #+#    #+#              #
-#    Updated: 2021/12/09 00:38:10 by abellakr         ###   ########.fr        #
+#    Updated: 2022/02/12 09:49:07 by abellakr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,10 @@ CFlAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME) : $(OBJECT)
+$(NAME) : $(OBJECT) 
 	ar rc $(NAME) $(OBJECT)
 bonus : $(BONUS_O) $(OBJECT)
-	ar rc $(NAME) $(BONUS_O) $(OBJECT)
+	ar rcs $(NAME) $(BONUS_O) $(OBJECT)
  
 clean :
 	rm -f $(OBJECT) $(BONUS_O)
