@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/12 17:06:11 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/12 21:45:31 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	draw_function(fdf_var *vars)
 void	dda_function(float x1, float y1, fdf_var *vars)
 {
 	int		color;
-	float 	z2;
+	int 	z2;
 	float	dx;
 	float	dy;
 	float	steps;
@@ -57,12 +57,12 @@ void	dda_function(float x1, float y1, fdf_var *vars)
 	z2 = vars->data_map[(int)vars->y2][(int)vars->x2].z;
 
 	//****************************************** 3D
-	x1 = (x1 - y1) * cos(0.84);
-	y1 = (x1 + y1) * sin(0.84) - vars->data_map[(int)y1][(int)x1].z;
-	vars->x2 = (vars->x2 - vars->y2) * cos(0.84);
-	vars->y2 = (vars->x2 + vars->y2) * sin(0.84) - z2;
-	
-	//***********************************zoom
+	x1 = (x1 - y1) * cos(1.085);
+	y1 = (x1 + y1) * sin(1.085) - vars->data_map[(int)y1][(int)x1].z;
+	vars->x2 = (vars->x2 - vars->y2) * cos(1.085);
+	vars->y2 = (vars->x2 + vars->y2) * sin(1.085) - z2;
+	//printf("\n|%d, %d|\n", vars->data_map[(int)y1][(int)x1].z,z2);
+	//*********************************** zoom
 	x1 *= ZOOM;
 	y1 *= ZOOM;
 	vars->x2 *= ZOOM;

@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/12 17:04:04 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/12 17:16:44 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void	draw_function(fdf_var *number);
 void	dda_function(float x1, float y1, fdf_var *number);
 
 //*************************************************** macros
-# define ZOOM 25
+# define ZOOM 30
 # define  CENTRAL 500
 #endif
