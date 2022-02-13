@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/12 21:45:31 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/13 19:25:58 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,13 @@ void	draw_function(fdf_var *vars)
 				vars->y2 = y;		
 				dda_function(x, y, vars);
 			}
+			// if(vars->data_map[(int)y][(int)x].z == 0)
+			// 	printf("%d  ", vars->data_map[(int)y][(int)x].z);
+			// else
+			// 	printf("%d ", vars->data_map[(int)y][(int)x].z);
 			x++;
 		}
+		//printf("\n");
 		y++;
 	}
 	mlx_loop(vars->ptr->mlx_ptr);
@@ -48,20 +53,22 @@ void	draw_function(fdf_var *vars)
 void	dda_function(float x1, float y1, fdf_var *vars)
 {
 	int		color;
-	int 	z2;
 	float	dx;
 	float	dy;
 	float	steps;
+	int z1;
+	int 	z2;
+
 
 	color = vars->data_map[(int)y1][(int)x1].color;
 	z2 = vars->data_map[(int)vars->y2][(int)vars->x2].z;
+	z1 = vars->data_map[(int)y1][(int)x1].z;
 
 	//****************************************** 3D
 	x1 = (x1 - y1) * cos(1.085);
-	y1 = (x1 + y1) * sin(1.085) - vars->data_map[(int)y1][(int)x1].z;
+	y1 = (x1 + y1) * sin(1.085) - z1;
 	vars->x2 = (vars->x2 - vars->y2) * cos(1.085);
 	vars->y2 = (vars->x2 + vars->y2) * sin(1.085) - z2;
-	//printf("\n|%d, %d|\n", vars->data_map[(int)y1][(int)x1].z,z2);
 	//*********************************** zoom
 	x1 *= ZOOM;
 	y1 *= ZOOM;
@@ -90,3 +97,4 @@ void	dda_function(float x1, float y1, fdf_var *vars)
 		y1 += dy;
 	}
 }
+// having truble with z for printing 3D
