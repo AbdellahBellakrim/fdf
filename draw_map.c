@@ -6,21 +6,27 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/13 19:25:58 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/13 21:47:21 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-//********************************************************* draw funtion
+//********************************************************* print
 void	draw_function(fdf_var *vars)
+{
+	vars->ptr = (mlx *)malloc(sizeof(mlx));
+	vars->ptr->mlx_ptr = mlx_init();
+	vars->ptr->window_ptr = mlx_new_window(vars->ptr->mlx_ptr, 2050, 1500, "fdf");
+	check_function(vars);
+	mlx_loop(vars->ptr->mlx_ptr);
+}
+//********************************************************* check lines and colones
+void	check_function(fdf_var *vars)
 {
 	int y;
 	int x;
 
 	y = 0;
-	vars->ptr = (mlx *)malloc(sizeof(mlx));
-	vars->ptr->mlx_ptr = mlx_init();
-	vars->ptr->window_ptr = mlx_new_window(vars->ptr->mlx_ptr, 2050, 1500, "fdf");
 	while(y < vars->lines)
 	{
 		x = 0;
@@ -38,16 +44,10 @@ void	draw_function(fdf_var *vars)
 				vars->y2 = y;		
 				dda_function(x, y, vars);
 			}
-			// if(vars->data_map[(int)y][(int)x].z == 0)
-			// 	printf("%d  ", vars->data_map[(int)y][(int)x].z);
-			// else
-			// 	printf("%d ", vars->data_map[(int)y][(int)x].z);
 			x++;
 		}
-		//printf("\n");
 		y++;
 	}
-	mlx_loop(vars->ptr->mlx_ptr);
 }
 //******************************************************** dda algorithm
 void	dda_function(float x1, float y1, fdf_var *vars)
@@ -56,19 +56,19 @@ void	dda_function(float x1, float y1, fdf_var *vars)
 	float	dx;
 	float	dy;
 	float	steps;
-	int z1;
-	int 	z2;
+	int z[2];
+
 
 
 	color = vars->data_map[(int)y1][(int)x1].color;
-	z2 = vars->data_map[(int)vars->y2][(int)vars->x2].z;
-	z1 = vars->data_map[(int)y1][(int)x1].z;
+	z[1] = vars->data_map[(int)vars->y2][(int)vars->x2].z;
+	z[0] = vars->data_map[(int)y1][(int)x1].z;
 
 	//****************************************** 3D
 	x1 = (x1 - y1) * cos(1.085);
-	y1 = (x1 + y1) * sin(1.085) - z1;
+	y1 = (x1 + y1) * sin(1.085) - z[0];
 	vars->x2 = (vars->x2 - vars->y2) * cos(1.085);
-	vars->y2 = (vars->x2 + vars->y2) * sin(1.085) - z2;
+	vars->y2 = (vars->x2 + vars->y2) * sin(1.085) - z[1];
 	//*********************************** zoom
 	x1 *= ZOOM;
 	y1 *= ZOOM;
@@ -92,7 +92,7 @@ void	dda_function(float x1, float y1, fdf_var *vars)
 	dy /= steps;
 	while((int)(x1 - vars->x2) || (int)(y1 - vars->y2))
 	{
-		mlx_pixel_put(vars->ptr->mlx_ptr, vars->ptr->window_ptr, x1, y1, color);
+		mlx_pixel_put(vars->ptr->mlx_ptr, vars->ptr->window_ptr, x1, y1, color); // function to handle mlx
 		x1 += dx;
 		y1 += dy;
 	}
