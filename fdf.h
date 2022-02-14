@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/13 21:47:41 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/14 08:50:10 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ void	free_function2(int index, char **tab);
 int		alloc_function(fdf_var * number);
 void	draw_function(fdf_var *vars);
 void	check_function(fdf_var *vars);
+void	index_check(int x, int y, fdf_var *vars);
 void	dda_function(float x1, float y1, fdf_var *number);
 //*************************************************** macos
-# define ZOOM 30
+# define ZOOM 25
 # define  CENTRAL 700
 #endif

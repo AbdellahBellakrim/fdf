@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/13 21:47:21 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/14 08:49:16 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	check_function(fdf_var *vars)
 	int y;
 	int x;
 
-	y = 0;
-	while(y < vars->lines)
+	y = -1;
+	while(++y < vars->lines)
 	{
-		x = 0;
-		while(x < vars->colones)
+		x = -1;
+		while(++x < vars->colones)
 		{
 			if(y < vars->lines - 1)
 			{
@@ -44,9 +44,7 @@ void	check_function(fdf_var *vars)
 				vars->y2 = y;		
 				dda_function(x, y, vars);
 			}
-			x++;
 		}
-		y++;
 	}
 }
 //******************************************************** dda algorithm
@@ -97,4 +95,3 @@ void	dda_function(float x1, float y1, fdf_var *vars)
 		y1 += dy;
 	}
 }
-// having truble with z for printing 3D
