@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/15 18:57:21 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/15 22:47:35 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct fdf_var
 {
 	int lines;
 	int colones;
+	float x1;
+	float y1;
 	float x2;
 	float y2;
 	map **data_map;
@@ -66,10 +68,10 @@ int		alloc_function(fdf_var * number);
 void	draw_function(fdf_var *vars);
 void	check_function(fdf_var *vars);
 void	index_check(int x, int y, fdf_var *vars);
-void	dda_function(float x1, float y1, fdf_var *number);
+void	dda_function(fdf_var *number);
 void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color);
 //*************************************************** macos
-# define ZOOM 1
+# define ZOOM 25
 # define CENTRAL 600
 # define HEIGH 1080
 # define WEIGHT 1920

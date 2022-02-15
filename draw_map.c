@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/15 18:32:52 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/15 23:57:32 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,25 @@ void	check_function(fdf_var *vars)
 		{
 			if(y < vars->lines - 1)
 			{
+				vars->x1 = x;
+				vars->y1 = y;
 				vars->x2 = x;
 				vars->y2 = y + 1;
-				dda_function(x, y,vars);
+				dda_function(vars);
 			}
 			if(x < vars->colones - 1)
 			{
+				vars->x1 = x;
+				vars->y1 = y;
 				vars->x2 = x + 1 ;
 				vars->y2 = y;		
-				dda_function(x, y, vars);
+				dda_function(vars);
 			}
 		}
 	}
 }
 //******************************************************** dda algorithm
-void	dda_function(float x1, float y1, fdf_var *vars)
+void	dda_function(fdf_var *vars)
 {
 	int		color;
 	float	dx;
@@ -62,38 +66,33 @@ void	dda_function(float x1, float y1, fdf_var *vars)
 	int z[2];
 
 
-
-	color = vars->data_map[(int)y1][(int)x1].color;
+	color = vars->data_map[(int)vars->y1][(int)vars->x1].color;
 	z[1] = vars->data_map[(int)vars->y2][(int)vars->x2].z;
-	z[0] = vars->data_map[(int)y1][(int)x1].z;
-
+	z[0] = vars->data_map[(int)vars->y1][(int)vars->x1].z;
 	//#################################### zoom
-	x1 *= ZOOM;
-	y1 *= ZOOM;
+	vars->x1 *= ZOOM;
+	vars->y1 *= ZOOM;
 	vars->x2 *= ZOOM;
 	vars->y2 *= ZOOM;
+	
 	//####################################3d
-	x1 = (x1 - y1) * cos(0.523599);
-	y1 = (x1 + y1) * sin(0.523599) - z[0];
+	vars->x1 = (vars->x1 - vars->y1) * cos(0.523599);
+	vars->y1 = (vars->x1 + vars->y1) * sin(0.523599) - z[0];
 	vars->x2 = (vars->x2 - vars->y2) * cos(0.523599);
 	vars->y2 = (vars->x2 + vars->y2) * sin(0.523599) - z[1];
-	
-
-	dx = vars->x2 - x1;
-	dy = vars->y2 - y1;
-
+	dx = vars->x2 - vars->x1;
+	dy = vars->y2 - vars->y1;
 	if(fabsf(dx) > fabsf(dy))
 		steps = fabsf(dx);
 	else
 		steps = fabsf(dy);
 	dx /= steps;
 	dy /= steps;
-	while((int)(x1 - vars->x2) || (int)(y1 - vars->y2))
+	while((int)(vars->x1 - vars->x2) || (int)(vars->y1 - vars->y2))
 	{
-		//mlx_pixel_put(vars->ptr->mlx_ptr,vars->ptr->window_ptr, x1, y1, color);
-		my_mlx_pixel_put(x1 + CENTRAL, y1 + CENTRAL, vars, color);
-		x1 += dx;
-		y1 += dy;
+		my_mlx_pixel_put(vars->x1 + CENTRAL, vars->y1 + CENTRAL, vars, color);
+		vars->x1 += dx;
+		vars->y1 += dy;
 	}
 }
 //********************************************************** mlx_handle_image
@@ -109,3 +108,6 @@ void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color)
 	}
 	
 }
+//split index,split 3d ,split zoom
+// zoom
+// centrage
