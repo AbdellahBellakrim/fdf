@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/14 14:54:00 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:57:21 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct mlx
 {
 	void *mlx_ptr;
 	void *window_ptr;
+	void *image_ptr;
+	char *buffer;
+	int bpp;
+	int line_lenght;
+	int endian;
+	
 }mlx;
 
 typedef struct fdf_var
@@ -61,7 +67,10 @@ void	draw_function(fdf_var *vars);
 void	check_function(fdf_var *vars);
 void	index_check(int x, int y, fdf_var *vars);
 void	dda_function(float x1, float y1, fdf_var *number);
+void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color);
 //*************************************************** macos
-# define ZOOM 25
-# define  CENTRAL 210
+# define ZOOM 1
+# define CENTRAL 600
+# define HEIGH 1080
+# define WEIGHT 1920
 #endif
