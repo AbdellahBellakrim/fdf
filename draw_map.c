@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/15 23:57:32 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:19:05 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,61 +39,76 @@ void	check_function(fdf_var *vars)
 		{
 			if(y < vars->lines - 1)
 			{
-				vars->x1 = x;
-				vars->y1 = y;
-				vars->x2 = x;
-				vars->y2 = y + 1;
+				check_index1(x, y, vars);
 				dda_function(vars);
 			}
 			if(x < vars->colones - 1)
 			{
-				vars->x1 = x;
-				vars->y1 = y;
-				vars->x2 = x + 1 ;
-				vars->y2 = y;		
+				check_index2(x, y, vars);
 				dda_function(vars);
 			}
 		}
 	}
 }
+//********************************************************* check index 1
+void	check_index1(int x, int y, fdf_var *vars)
+{
+	vars->x1 = x;
+	vars->y1 = y;
+	vars->x2 = x;
+	vars->y2 = y + 1;
+}
+//********************************************************* check index 2
+void	check_index2(int x, int y, fdf_var *vars)
+{
+	vars->x1 = x;
+	vars->y1 = y;
+	vars->x2 = x + 1 ;
+	vars->y2 = y;
+}
 //******************************************************** dda algorithm
 void	dda_function(fdf_var *vars)
 {
 	int		color;
-	float	dx;
-	float	dy;
 	float	steps;
+	float	dxy[2];
 	int z[2];
 
-
-	color = vars->data_map[(int)vars->y1][(int)vars->x1].color;
 	z[1] = vars->data_map[(int)vars->y2][(int)vars->x2].z;
 	z[0] = vars->data_map[(int)vars->y1][(int)vars->x1].z;
-	//#################################### zoom
-	vars->x1 *= ZOOM;
-	vars->y1 *= ZOOM;
-	vars->x2 *= ZOOM;
-	vars->y2 *= ZOOM;
-	
-	//####################################3d
+	color = vars->data_map[(int)vars->y1][(int)vars->x1].color;
+	isometrie(vars, z);
+	zoom(vars);
+	dxy[0] = vars->x2 - vars->x1;
+	dxy[1] = vars->y2 - vars->y1;
+	if(fabsf(dxy[0]) > fabsf(dxy[1]))
+		steps = fabsf(dxy[0]);
+	else
+		steps = fabsf(dxy[1]);
+	dxy[0] /= steps;
+	dxy[1] /= steps;
+	while((int)(vars->x1 - vars->x2) || (int)(vars->y1 - vars->y2))
+	{
+		my_mlx_pixel_put(vars->x1 + CENTRAL, vars->y1 + CENTRAL, vars, color);
+		vars->x1 += dxy[0];
+		vars->y1 += dxy[1];
+	}
+}
+//*************************************************** 3d isometric
+void	isometrie(fdf_var *vars, int *z)
+{
 	vars->x1 = (vars->x1 - vars->y1) * cos(0.523599);
 	vars->y1 = (vars->x1 + vars->y1) * sin(0.523599) - z[0];
 	vars->x2 = (vars->x2 - vars->y2) * cos(0.523599);
 	vars->y2 = (vars->x2 + vars->y2) * sin(0.523599) - z[1];
-	dx = vars->x2 - vars->x1;
-	dy = vars->y2 - vars->y1;
-	if(fabsf(dx) > fabsf(dy))
-		steps = fabsf(dx);
-	else
-		steps = fabsf(dy);
-	dx /= steps;
-	dy /= steps;
-	while((int)(vars->x1 - vars->x2) || (int)(vars->y1 - vars->y2))
-	{
-		my_mlx_pixel_put(vars->x1 + CENTRAL, vars->y1 + CENTRAL, vars, color);
-		vars->x1 += dx;
-		vars->y1 += dy;
-	}
+}
+//***************************************************** zoom 
+void	zoom(fdf_var *vars)
+{
+	vars->x1 *= ZOOM;
+	vars->y1 *= ZOOM;
+	vars->x2 *= ZOOM;
+	vars->y2 *= ZOOM;
 }
 //********************************************************** mlx_handle_image
 void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color)
@@ -101,13 +116,9 @@ void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color)
 	char	*dst;
 	if(((int)x1 >= 0 && (int)x1 < WEIGHT) && ((int)y1 >= 0 && (int)y1 < HEIGH))
 	{
-		
-
 		dst = vars->ptr->buffer + ((int)y1 * vars->ptr->line_lenght + (int)x1 * (vars->ptr->bpp / 8));
 		*(unsigned int*)dst = color;
 	}
-	
 }
-//split index,split 3d ,split zoom
 // zoom
 // centrage

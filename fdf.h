@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/15 22:47:35 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:13:08 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,17 @@ void	free_function2(int index, char **tab);
 int		alloc_function(fdf_var * number);
 void	draw_function(fdf_var *vars);
 void	check_function(fdf_var *vars);
-void	index_check(int x, int y, fdf_var *vars);
+void	check_index1(int x, int y, fdf_var *vars);
+void	check_index2(int x, int y, fdf_var *vars);
+
+
+
+
+
 void	dda_function(fdf_var *number);
+void	zoom(fdf_var *vars);
+
+void	isometrie(fdf_var *vars, int *z);
 void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color);
 //*************************************************** macos
 # define ZOOM 25
