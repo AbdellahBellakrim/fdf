@@ -6,12 +6,12 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/12 12:30:29 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/16 22:55:18 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-//************************************ 1: lines number
+/*--------------------------------------------------------------------------------------*/
 void	line_nb(int fd, fdf_var *number)
 {
 	int  index;
@@ -28,7 +28,7 @@ void	line_nb(int fd, fdf_var *number)
 	number->lines = index;
 	
 }
-//************************************** 2: colones number
+/*--------------------------------------------------------------------------------------*/
 int	colone_nb(char *line)
 {
 	char **colones;
@@ -40,7 +40,7 @@ int	colone_nb(char *line)
 		index++;
 	return(index);
 }
-//************************************************** 3: check the color 
+/*--------------------------------------------------------------------------------------*/
 int check_color(char *str)
 {
 	int index;
@@ -54,7 +54,7 @@ int check_color(char *str)
 	}
 	return(0);
 }
-//**************************************************** 4: read from the line 
+/*--------------------------------------------------------------------------------------*/
 void	read_line(char *line, map *line_in_map)
 {
 	int index;
@@ -81,7 +81,7 @@ void	read_line(char *line, map *line_in_map)
 	}
 	free(colones);
 }
-//****************************************************** 5: read from the map
+/*--------------------------------------------------------------------------------------*/
 void store_map(int fd,char *fname, map **map_variables)
 {
 	int		index;
