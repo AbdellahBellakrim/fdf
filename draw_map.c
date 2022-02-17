@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/17 18:26:51 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:03:03 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	check_function(fdf_var *vars)
 				dda_function(vars);
 			}
 		}
-		// printf("\nvars->x_offset--------%f-------\n",vars->x_offset);
-		// printf("\nvars->y_offset--------%f-------\n",vars->y_offset);
 	}
 }
 /*--------------------------------------------------------------------------------------*/
@@ -86,5 +84,3 @@ void	dda_function(fdf_var *vars)
 		vars->y1 += dy;
 	}
 }
-// centrage b les cas dialo 
-// esc botton 

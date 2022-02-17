@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/17 18:24:56 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:36:55 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,20 @@
 /*--------------------------------------------------------------------------------------*/
 void	check_args(int ac, char **av, fdf_var *number)
 {
-	int z;
-	int zoom;
-	
-	if (ac == 2)
+	if(ac == 2)
 	{
-		number->z_offset = 1;
 		number->zoom = 1;
+		number->z_offset = 1;
 	}
-	else if(ac == 4)
+	if(ac == 4)
 	{
-		zoom = ft_atoi(av[2]);
-		z = ft_atoi(av[3]);
-		if(z != 0 && zoom > 0)
-		{
-			number->zoom = zoom;
-			number->z_offset = z;	
-		}
-		else
-		{
-			number->z_offset = 1;
-			number->zoom = 1;
-		}
+		number->zoom = ft_atoi(av[2]);
+		number->z_offset = ft_atoi(av[3]);
+	}
+	if(number->zoom == 0 || number->z_offset == 0)
+	{
+		number->zoom = 1;
+		number->z_offset = 1;
 	}
 }
 /*--------------------------------------------------------------------------------------*/
@@ -92,5 +84,6 @@ int main(int ac,char **av)
 	close(fd);
 	alloc_function(number);
 	store_map(fd, av[1] , number->data_map); // store the map 
+
 	draw_function(number); // draw the map
 }
