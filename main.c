@@ -6,31 +6,36 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/17 00:05:27 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:24:56 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 /*--------------------------------------------------------------------------------------*/
-void	check_ac(int ac, char **av,fdf_var *number)
+void	check_args(int ac, char **av, fdf_var *number)
 {
-	if(ac == 2 || ac == 4)
+	int z;
+	int zoom;
+	
+	if (ac == 2)
 	{
-		if(ac != 2 && (ft_atoi(av[2]) != 0 && ft_atoi(av[3]) != 0))
+		number->z_offset = 1;
+		number->zoom = 1;
+	}
+	else if(ac == 4)
+	{
+		zoom = ft_atoi(av[2]);
+		z = ft_atoi(av[3]);
+		if(z != 0 && zoom > 0)
 		{
-			number->check_ac = 1;
-			number->zoom_args = ft_atoi(av[2]);
-			number->z_args = ft_atoi(av[3]);
-			
+			number->zoom = zoom;
+			number->z_offset = z;	
 		}
 		else
-			number->check_ac = 0;
-	}
-	else
-	{
-		free(number);
-		perror("erros arguments ");
-		exit(0);
+		{
+			number->z_offset = 1;
+			number->zoom = 1;
+		}
 	}
 }
 /*--------------------------------------------------------------------------------------*/
@@ -76,10 +81,12 @@ int main(int ac,char **av)
 	int		fd;
 	fdf_var	*number;
 	
+	if(ac != 2 && ac != 4)
+		return(perror("erros arguments "), 0);
 	number = (fdf_var *)malloc(sizeof(fdf_var));
 	if(!number)
 		return(0);
-	check_ac(ac, av, number);
+	check_args(ac , av, number);
 	fd = open(av[1],O_RDONLY); // get the number of lines of the map & the number of colones
 	line_nb(fd, number);
 	close(fd);

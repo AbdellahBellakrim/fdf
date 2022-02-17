@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/16 23:38:02 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:28:02 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ typedef struct mlx
 
 typedef struct fdf_var
 {
-	int  check_ac;
-	int zoom_args;
-	int z_args;
+	float	x_offset;
+	float	y_offset;
+	float	zoom;
+	int	z_offset;
+	/*----------------*/
 	int lines;
 	int colones;
 	float x1;
@@ -44,10 +46,10 @@ typedef struct fdf_var
 	float y2;
 	int	z1;
 	int z2;
-	int centrage;
 	map **data_map;
 	mlx *ptr;
 } fdf_var;
+
 
 /*--------------------------------------------------------------------------------------*/
 
@@ -63,7 +65,6 @@ typedef struct fdf_var
 
 char	*ft_strdup2(char *s);
 char	*get_next_line(int fd);
-void	check_ac(int ac, char **av,fdf_var *number);
 void	line_nb(int fd, fdf_var *number);
 int		colone_nb(char *str);
 int		atoi_hexa(char *number);
@@ -80,11 +81,10 @@ void	check_index2(int x, int y, fdf_var *vars);
 void	dda_function(fdf_var *number);
 void	isometrie(fdf_var *vars);
 void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color);
-
+void	check_args(int ac,char **av, fdf_var *number);
+void	centrage(fdf_var *vars);
+void	zoom(fdf_var *vars);
 /*--------------------------------------------------------------------------------------*/
-
-# define CENTRAGE 600
-# define ZOOM 25
 # define HEIGH 1080
-# define WEIGHT 1920
+# define WEIGHT 1820
 #endif

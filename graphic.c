@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:27:21 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/16 22:43:30 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:27:05 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,47 @@ void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color)
 		dst = vars->ptr->buffer + ((int)y1 * vars->ptr->line_lenght + (int)x1 * (vars->ptr->bpp / 8));
 		*(unsigned int*)dst = color;
 	}
+}
+/*--------------------------------------------------------------------------------------*/
+void	isometrie(fdf_var *vars)
+{
+	int z1;
+	int z2;
+	
+	z1 = vars->z1 * vars->z_offset;
+	z2 = vars->z2 * vars->z_offset;
+	vars->x1 = (vars->x1 - vars->y1) * cos(0.523599);
+	vars->y1 = (vars->x1 + vars->y1) * sin(0.523599) - z1;
+	vars->x2 = (vars->x2 - vars->y2) * cos(0.523599);
+	vars->y2 = (vars->x2 + vars->y2) * sin(0.523599) - z2;
+}
+/*--------------------------------------------------------------------------------------*/
+void	centrage(fdf_var *vars)
+{
+	int diametre;
+
+	diametre = sqrt(pow(WEIGHT,2) + pow(HEIGH,2));
+	vars->x_offset =  WEIGHT  - (diametre / 2.3);
+	vars->y_offset = (diametre * 230)  / HEIGH ;
+}
+/*--------------------------------------------------------------------------------------*/
+void	zoom(fdf_var *vars)
+{
+	int diamtre_map;
+	int zoom;
+
+	diamtre_map = sqrt(pow(vars->colones,2) + pow(vars->lines,2));
+	if(vars->zoom == 1)
+	{
+		if(diamtre_map < 100)
+			zoom = 25;
+		else
+			zoom = 2;
+	}
+	else
+		zoom = vars->zoom;
+	vars->x1 *= zoom;
+	vars->y1 *= zoom;
+	vars->x2 *= zoom;
+	vars->y2 *= zoom;
 }
