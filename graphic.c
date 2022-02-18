@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:27:21 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/17 22:04:31 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:09:22 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	draw_function(fdf_var *vars)
 	
 	check_function(vars);
 	mlx_put_image_to_window(vars->ptr->mlx_ptr,vars->ptr->window_ptr,vars->ptr->image_ptr, 0 ,0);
+	mlx_hook(vars->ptr->window_ptr , 2, 1L << 0, esc, vars);
+
 	mlx_loop(vars->ptr->mlx_ptr);
 }
 /*-------------------------------------------------------------------------------------------------*/
@@ -80,7 +82,16 @@ void	zoom(fdf_var *vars)
 	vars->x2 *= zoom;
 	vars->y2 *= zoom;
 }
-//esc
-//erros
-//mlx hook
-// bonus 
+/*--------------------------------------------------------------------------------------*/
+int	esc(int keycode, fdf_var *number)
+{
+	if(keycode == 53)
+	{
+		mlx_destroy_image (number->ptr->mlx_ptr,number->ptr->image_ptr);
+		mlx_destroy_window (number->ptr->mlx_ptr,number->ptr->window_ptr);
+		free_function(number->lines,number->data_map);
+		free(number);
+		exit(0);
+	}
+	return(0);
+}
