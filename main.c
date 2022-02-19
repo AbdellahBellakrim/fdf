@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/19 13:42:17 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/19 15:11:01 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,25 @@ int	alloc_function(fdf_var *number)
 	}
 	return (1);
 }
+/*------------------------------------------------------*/
+void	check_extension(char *fname)
+{
+	unsigned long	i;
+	char			*str;
 
+	i = 0;
+	str = fname;
+	while(i < ft_strlen(fname) - 4)
+	{
+		str++;
+		i++;
+	}
+	if(ft_strncmp(str, ".fdf", 4))
+	{
+		perror("oops wrong file extention");
+		exit(0);
+	}
+}
 /*--------------------------------------------------------------*/
 int	main(int ac, char **av)
 {
@@ -58,16 +76,14 @@ int	main(int ac, char **av)
 
 	if (ac != 2 && ac != 4)
 		return (perror("erros arguments "), 0);
+	check_extension(av[1]);
 	number = (fdf_var *)malloc(sizeof(fdf_var));
 	if (!number)
 		return (0);
 	check_args (ac, av, number);
 	fd = open (av[1], O_RDONLY);
 	if(fd < 0)
-	{
-		perror("someting is wrong ");
-		exit(0);
-	}
+		return(perror("someting is wrong "), 0);
 	line_nb (fd, number);
 	close (fd);
 	alloc_function (number);

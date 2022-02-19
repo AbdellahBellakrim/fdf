@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/19 12:42:16 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/19 15:02:07 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,9 @@ void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color);
 void	check_args(int ac,char **av, fdf_var *number);
 void	centrage(fdf_var *vars);
 void	zoom(fdf_var *vars);
-int	esc(int keycode, fdf_var *number);
+int		esc(int keycode, fdf_var *number);
 void	check_invalid_map(fdf_var *number, int check_colones);
+void	check_extension(char *fname);
 /*-----------------------------------------------------------------*/
 # define HEIGH 1080
 # define WEIGHT 1820
