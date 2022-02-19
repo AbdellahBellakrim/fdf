@@ -6,13 +6,13 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/18 17:40:10 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/19 12:42:16 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef	FDF_H
 # define	FDF_H
-/*--------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------*/
 typedef struct map
 {
 	int	z;
@@ -49,7 +49,7 @@ typedef struct fdf_var
 	map		**data_map;
 	mlx		*ptr;
 } fdf_var;
-/*--------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------*/
 #include <mlx.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -57,7 +57,7 @@ typedef struct fdf_var
 #include <stdio.h>
 #include <math.h>
 #include "./libft/libft.h"
-/*--------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------*/
 char	*ft_strdup2(char *s);
 char	*get_next_line(int fd);
 void	line_nb(int fd, fdf_var *number);
@@ -80,7 +80,8 @@ void	check_args(int ac,char **av, fdf_var *number);
 void	centrage(fdf_var *vars);
 void	zoom(fdf_var *vars);
 int	esc(int keycode, fdf_var *number);
-/*--------------------------------------------------------------------------------------*/
+void	check_invalid_map(fdf_var *number, int check_colones);
+/*-----------------------------------------------------------------*/
 # define HEIGH 1080
 # define WEIGHT 1820
 #endif

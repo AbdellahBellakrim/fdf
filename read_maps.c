@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/16 22:55:18 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/19 13:43:40 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	line_nb(int fd, fdf_var *number)
 {
 	int  index;
+	int	check_colones;
 	char *line;
 	
 	index = 0;
@@ -22,6 +23,8 @@ void	line_nb(int fd, fdf_var *number)
 	number->colones = colone_nb(line);
 	while(line)
 	{
+		check_colones = colone_nb(line);
+		check_invalid_map(number, check_colones);
 		line = get_next_line(fd);
 		++index;
 	}
@@ -89,6 +92,11 @@ void store_map(int fd,char *fname, map **map_variables)
 	
 
 	fd = open(fname, O_RDONLY);
+	if(fd < 0)
+	{
+		perror("somtthing is wrong");
+		exit(0);
+	}
 	index = 0;
 	while((line = get_next_line(fd)))
 	{
@@ -97,4 +105,13 @@ void store_map(int fd,char *fname, map **map_variables)
 	}
 	map_variables[index] = NULL;
 	close(fd);
+}
+/*--------------------------------------------------------------------------------------*/
+void	check_invalid_map(fdf_var *number, int check_colones)
+{
+	if(check_colones != number->colones)
+	{
+		perror("oops invalid map short or long line");
+		exit(0);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/18 18:39:56 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/19 13:42:17 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ int	main(int ac, char **av)
 		return (0);
 	check_args (ac, av, number);
 	fd = open (av[1], O_RDONLY);
+	if(fd < 0)
+	{
+		perror("someting is wrong ");
+		exit(0);
+	}
 	line_nb (fd, number);
 	close (fd);
 	alloc_function (number);

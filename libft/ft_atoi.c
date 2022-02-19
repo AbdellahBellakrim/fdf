@@ -6,9 +6,11 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 16:09:53 by abellakr          #+#    #+#             */
-/*   Updated: 2021/11/16 05:40:29 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/19 13:40:26 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
@@ -26,6 +28,11 @@ int	ft_atoi(const char *str)
 		signe = -signe;
 	if (*p == '-' || *p == '+')
 		p++;
+	if (*p < '0' || *p > '9')
+	{
+		perror ("oops invalid z !");
+		exit (0);
+	}
 	while (*p >= '0' && *p <= '9')
 	{
 		k = k * 10 +(*p - 48);
