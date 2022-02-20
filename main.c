@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/19 15:11:01 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/20 19:38:26 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ int	main(int ac, char **av)
 		return (0);
 	check_args (ac, av, number);
 	fd = open (av[1], O_RDONLY);
-	if(fd < 0)
+	if(fd < 0 || read(fd, 0, 1)  == 0)
 		return(perror("someting is wrong "), 0);
 	line_nb (fd, number);
 	close (fd);
 	alloc_function (number);
-	store_map (fd, av[1], number->data_map);
+	store_map (fd, av[1], number->data_map, number);
 	draw_function (number);
 }

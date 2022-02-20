@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/19 15:02:07 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/20 19:42:24 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	line_nb(int fd, fdf_var *number);
 int		colone_nb(char *str);
 int		atoi_hexa(char *number);
 int		check_color(char *str);
-void	read_line(char *line, map *line_in_map);
-void 	store_map(int fd, char *fname, map **map_variables);
+void	read_line(char *line, map *line_in_map, fdf_var *number);
+void	store_map(int fd,char *fname, map **map_variables, fdf_var *number);
 void	free_function(int index, map **tab);
 void	free_function2(int index, char **tab);
 int		alloc_function(fdf_var * number);

@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/19 13:43:40 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/20 20:15:51 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	line_nb(int fd, fdf_var *number)
 {
 	int  index;
-	int	check_colones;
 	char *line;
 	
 	index = 0;
@@ -23,8 +22,6 @@ void	line_nb(int fd, fdf_var *number)
 	number->colones = colone_nb(line);
 	while(line)
 	{
-		check_colones = colone_nb(line);
-		check_invalid_map(number, check_colones);
 		line = get_next_line(fd);
 		++index;
 	}
@@ -58,7 +55,7 @@ int check_color(char *str)
 	return(0);
 }
 /*--------------------------------------------------------------------------------------*/
-void	read_line(char *line, map *line_in_map)
+void	read_line(char *line, map *line_in_map, fdf_var *number)
 {
 	int index;
 	char **colones;
@@ -68,11 +65,19 @@ void	read_line(char *line, map *line_in_map)
 	colones = ft_split(line,' ');
 	while(colones[++index])
 	{
+		if(ft_isprint(colones[index][0]) <= 0)
+		{
+			perror("oops invalid map");
+			exit(0);
+		}
 		if(check_color(colones[index]))
 		{
 			colored_colones = ft_split(colones[index], ',');
+			if(colored_colones[1] == NULL)
+				line_in_map[index].color = 0;
+			else
+				line_in_map[index].color = atoi_hexa(colored_colones[1]);
 			line_in_map[index].z = ft_atoi(colored_colones[0]);
-			line_in_map[index].color = atoi_hexa(colored_colones[1]);
 			free_function2(3, colored_colones);
 		}
 		else
@@ -82,17 +87,22 @@ void	read_line(char *line, map *line_in_map)
 		}
 		free(colones[index]);
 	}
+	if(index  != number->colones)
+	{
+		perror("oops invalid map short or long line");
+		exit(0);
+	}
 	free(colones);
 }
 /*--------------------------------------------------------------------------------------*/
-void store_map(int fd,char *fname, map **map_variables)
+void store_map(int fd,char *fname, map **map_variables, fdf_var *number)
 {
 	int		index;
 	char	*line;
 	
 
 	fd = open(fname, O_RDONLY);
-	if(fd < 0)
+	if(fd < 0 || read(fd, 0, 1)  == 0)
 	{
 		perror("somtthing is wrong");
 		exit(0);
@@ -100,7 +110,7 @@ void store_map(int fd,char *fname, map **map_variables)
 	index = 0;
 	while((line = get_next_line(fd)))
 	{
-		read_line(line, map_variables[index]);
+		read_line(line, map_variables[index], number);
 		index++;
 	}
 	map_variables[index] = NULL;
@@ -112,6 +122,11 @@ void	check_invalid_map(fdf_var *number, int check_colones)
 	if(check_colones != number->colones)
 	{
 		perror("oops invalid map short or long line");
+		//system("leaks fdf");
 		exit(0);
 	}
 }
+
+//tab and space
+//max color
+// z, 
