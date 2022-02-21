@@ -6,7 +6,7 @@
 #    By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/04 18:13:59 by abellakr          #+#    #+#              #
-#    Updated: 2022/02/20 15:33:03 by abellakr         ###   ########.fr        #
+#    Updated: 2022/02/21 11:14:08 by abellakr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFlAGS = -Wall -Wextra -Werror
 
 FRAMEWORKS = -lmlx -framework OpenGL -framework AppKit
 
-SRC = main.c read_maps.c utils.c draw_map.c graphic.c
+SRC = main.c read_maps.c utils.c draw_map.c graphic.c check_all.c free_leaks.c
 
 all : $(NAME)
 

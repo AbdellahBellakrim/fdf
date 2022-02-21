@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 19:31:10 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/19 15:28:32 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/21 14:47:20 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,48 +64,26 @@ int	atoi_hexa(char *number)
 	int	j;
 	int	sum;
 
-	i = ft_strlen (number) - 1 ;
+	i = 8;
 	j = 0;
 	sum = 0;
-	while (i > 1)
+	if(number == NULL)
+		return(0);
+	if(ft_strncmp(number, "0x", 2) != 1 || ft_strncmp(number, "0X", 2) != 1)
 	{
-		if (number[i] >= 'A' && number[i] <= 'F')
-			sum = sum + (number[i] - 55) * pow(16, j);
-		else if (number[i] >= 'a' && number[i] <= 'f')
-			sum = sum + (number[i] - 87) * pow(16, j);
-		else if (number[i] >= '0' && number[i] <= '9')
-			sum = sum + (number[i] - 48) * pow(16, j);
-		else if((number[i] <= 'A' && number[i] >= 'F') || \
-		(number[i] <= 'a' && number[i] >= 'f') ||\
-		 (number[i] <= '0' && number[i] >= '9'))
+		while (i > 1)
 		{
-			perror ("invalid color ");
-			exit (0);
+			if (number[i] >= 'A' && number[i] <= 'F')
+				sum = sum + (number[i] - 55) * pow(16, j);
+			else if (number[i] >= 'a' && number[i] <= 'f')
+				sum = sum + (number[i] - 87) * pow(16, j);
+			else if (number[i] >= '0' && number[i] <= '9')
+				sum = sum + (number[i] - 48) * pow(16, j);
+			i--;
+			j++;
 		}
-		i--;
-		j++;
 	}
+	else
+		return(ft_atoi(number));
 	return (sum);
-}
-
-/*-----------------------------------------------*/
-void	free_function(int index, map **tab)
-{
-	int	i;
-
-	i = index - 1;
-	while (i--)
-		free (tab[i]);
-	free (tab);
-}
-
-/*-------------------------------------------------*/
-void	free_function2(int index, char **tab)
-{
-	int	i;
-
-	i = index - 1;
-	while (i--)
-		free (tab[i]);
-	free (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/20 20:15:51 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/21 14:54:55 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,7 @@ void	read_line(char *line, map *line_in_map, fdf_var *number)
 		if(check_color(colones[index]))
 		{
 			colored_colones = ft_split(colones[index], ',');
-			if(colored_colones[1] == NULL)
-				line_in_map[index].color = 0;
-			else
-				line_in_map[index].color = atoi_hexa(colored_colones[1]);
+			line_in_map[index].color = atoi_hexa(colored_colones[1]);
 			line_in_map[index].z = ft_atoi(colored_colones[0]);
 			free_function2(3, colored_colones);
 		}
@@ -116,17 +113,7 @@ void store_map(int fd,char *fname, map **map_variables, fdf_var *number)
 	map_variables[index] = NULL;
 	close(fd);
 }
-/*--------------------------------------------------------------------------------------*/
-void	check_invalid_map(fdf_var *number, int check_colones)
-{
-	if(check_colones != number->colones)
-	{
-		perror("oops invalid map short or long line");
-		//system("leaks fdf");
-		exit(0);
-	}
-}
-
-//tab and space
-//max color
-// z, 
+// ,z
+//tab and espace
+//leaks
+// norme 

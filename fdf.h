@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/20 19:42:24 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/21 13:42:47 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	check_args(int ac,char **av, fdf_var *number);
 void	centrage(fdf_var *vars);
 void	zoom(fdf_var *vars);
 int		esc(int keycode, fdf_var *number);
-void	check_invalid_map(fdf_var *number, int check_colones);
 void	check_extension(char *fname);
 /*-----------------------------------------------------------------*/
 # define HEIGH 1080
