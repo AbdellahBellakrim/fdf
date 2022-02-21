@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 19:31:10 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/21 14:47:20 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/21 19:51:50 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strdup2(char *s)
 	while (s[i])
 		i++;
 	t = malloc(i + 1);
+	if(!t)
+		return(NULL);
 	i = 0;
 	while (s[i])
 	{
@@ -64,12 +66,12 @@ int	atoi_hexa(char *number)
 	int	j;
 	int	sum;
 
-	i = 8;
+	i = 7;
 	j = 0;
 	sum = 0;
 	if(number == NULL)
 		return(0);
-	if(ft_strncmp(number, "0x", 2) != 1 || ft_strncmp(number, "0X", 2) != 1)
+	if(ft_strncmp(number, "0x", 2) >= 0 || ft_strncmp(number, "0X", 2) >= 0)
 	{
 		while (i > 1)
 		{

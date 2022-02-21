@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:27:21 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/19 14:02:52 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/21 20:39:33 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ int	esc(int keycode, fdf_var *number)
 	{
 		mlx_destroy_image (number->ptr->mlx_ptr,number->ptr->image_ptr);
 		mlx_destroy_window (number->ptr->mlx_ptr,number->ptr->window_ptr);
-		free_function(number->lines,number->data_map);
-		free(number);
 		exit(0);
 	}
 	return(0);

@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:28:46 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/21 10:29:45 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/21 20:40:00 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,39 @@ void	check_extension(char *fname)
 		perror("oops wrong file extention");
 		exit(0);
 	}
+}
+/*------------------------------------------------------*/
+void	check_print(char **colones, int index)
+{
+		if(ft_isprint(colones[index][0]) <= 0)
+		{
+			free_function2(index, colones);
+			perror("oops invalid map");
+			exit(0);
+		}
+}
+/*------------------------------------------------------*/
+void	check_map(fdf_var *number, int index)
+{
+	if(index  < number->colones)
+	{
+		free_function(index, number->data_map);
+		//system("leaks fdf");
+		perror("oops invalid map short or long line");
+		exit(0);
+	}
+}
+/*-----------------------------------------------------*/
+int check_color(char *str)
+{
+	int index;
+
+	index = 0;
+	while(str[index++])
+	{
+		if(ft_strchr(str, ','))
+			return(1);
+		index++;
+	}
+	return(0);
 }
