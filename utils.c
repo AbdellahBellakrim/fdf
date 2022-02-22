@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 19:31:10 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/21 19:51:50 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:42:43 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ char	*ft_strdup2(char *s)
 	while (s[i])
 		i++;
 	t = malloc(i + 1);
-	if(!t)
-		return(NULL);
+	if (!t)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{
@@ -62,30 +62,35 @@ char	*get_next_line(int fd)
 /*---------------------------------------*/
 int	atoi_hexa(char *number)
 {
-	int	i;
-	int	j;
 	int	sum;
 
-	i = 7;
-	j = 0;
 	sum = 0;
-	if(number == NULL)
+	if (number == NULL)
 		return(0);
-	if(ft_strncmp(number, "0x", 2) >= 0 || ft_strncmp(number, "0X", 2) >= 0)
-	{
-		while (i > 1)
-		{
-			if (number[i] >= 'A' && number[i] <= 'F')
-				sum = sum + (number[i] - 55) * pow(16, j);
-			else if (number[i] >= 'a' && number[i] <= 'f')
-				sum = sum + (number[i] - 87) * pow(16, j);
-			else if (number[i] >= '0' && number[i] <= '9')
-				sum = sum + (number[i] - 48) * pow(16, j);
-			i--;
-			j++;
-		}
-	}
+	if (ft_strncmp(number, "0x", 2) >= 0 || ft_strncmp(number, "0X", 2) >= 0)
+		sum = handle_cases_atoh(sum, number);
 	else
 		return(ft_atoi(number));
 	return (sum);
+}
+/*---------------------------------------*/
+int	handle_cases_atoh(int sum, char *number)
+{
+	int i;
+	int j;
+
+	i = 7;
+	j = 0;
+	while (i > 1)
+	{
+		if (number[i] >= 'A' && number[i] <= 'F')
+			sum = sum + (number[i] - 55) * pow(16, j);
+		else if (number[i] >= 'a' && number[i] <= 'f')
+			sum = sum + (number[i] - 87) * pow(16, j);
+		else if (number[i] >= '0' && number[i] <= '9')
+			sum = sum + (number[i] - 48) * pow(16, j);
+		i--;
+		j++;
+	}
+	return(sum);
 }
