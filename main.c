@@ -6,25 +6,25 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/21 20:29:32 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:38:56 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 /*------------------------------------------------------*/
-int	alloc_function(fdf_var *number)
+int	alloc_function(t_fdf_var *number)
 {
 	int	index;
 
 	index = -1;
-	number->data_map = (map **)malloc(sizeof(map) * (number->lines + 1));
+	number->data_map = (t_map **)malloc(sizeof(t_map) * (number->lines + 1));
 	if (!number->data_map)
 		return (0);
 	while (++index < number->lines)
 	{
 		number->data_map[index] = \
-		(map *)malloc(sizeof(map) * (number->colones + 1));
+		(t_map *)malloc(sizeof(t_map) * (number->colones + 1));
 		if (!number->data_map[index])
 			return (free_function(index, number->data_map), 0);
 	}
@@ -34,12 +34,12 @@ int	alloc_function(fdf_var *number)
 int	main(int ac, char **av)
 {
 	int		fd;
-	fdf_var	*number;
+	t_fdf_var	*number;
 
 	if (ac != 2 && ac != 4)
 		return (perror("erros arguments "), 0);
 	check_extension(av[1]);
-	number = (fdf_var *)malloc(sizeof(fdf_var));
+	number = (t_fdf_var *)malloc(sizeof(t_fdf_var));
 	if (!number)
 		return (0);
 	check_args (ac, av, number);

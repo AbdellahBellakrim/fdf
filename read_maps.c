@@ -6,13 +6,13 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/21 20:41:57 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:00:54 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 /*--------------------------------------------------------------------------------------*/
-void	line_nb(int fd, fdf_var *number)
+void	line_nb(int fd, t_fdf_var *number)
 {
 	int  index;
 	char *line;
@@ -45,41 +45,20 @@ int	colone_nb(char *line)
 }
 
 /*--------------------------------------------------------------------------------------*/
-void	read_line(char *line, map *line_in_map, fdf_var *number)
+void	read_line(char *line, t_map *line_in_map, t_fdf_var *number)
 {
 	int index;
 	char **colones;
-	char **colored_colones;
 
 	index = -1;
 	colones = ft_split(line,' ');
 	while(colones[++index])
-	{
-		check_print(colones, index);
-		if(check_color(colones[index]))
-		{
-			colored_colones = ft_split(colones[index], ',');
-			line_in_map[index].color = atoi_hexa(colored_colones[1]);
-			if(ft_strncmp(colones[index], ",", 1) == 0)
-				line_in_map[index].z = 0;
-			else
-			line_in_map[index].z = ft_atoi(colored_colones[0]);
-		}
-		else
-		{
-			if(ft_strncmp(colones[index], ",", 1) == 0)
-				line_in_map[index].z = 0;
-			else
-				line_in_map[index].z = ft_atoi(colones[index]);
-			line_in_map[index].color = atoi_hexa("0xFFFFFF");
-		}
-		free(colones[index]);
-	}
+		split_cas_color(index, colones, line_in_map);
 	check_map(number, index);
 	free(colones);
 }
 /*--------------------------------------------------------------------------------------*/
-void store_map(int fd,char *fname, map **map_variables, fdf_var *number)
+void store_map(int fd,char *fname, t_map **map_variables, t_fdf_var *number)
 {
 	int		index;
 	char	*line;
@@ -89,7 +68,6 @@ void store_map(int fd,char *fname, map **map_variables, fdf_var *number)
 	if(fd < 0 || read(fd, 0, 1)  == 0)
 	{
 		perror("somtthing is wrong");
-		
 		exit(0);
 	}
 	index = 0;
@@ -102,7 +80,31 @@ void store_map(int fd,char *fname, map **map_variables, fdf_var *number)
 	map_variables[index] = NULL;
 	close(fd);
 }
-//tab and espace
-//leaks
+/*--------------------------------------------------------------------------------------*/
+void	split_cas_color(int index, char **colones, t_map *line_in_map)
+{
+	char **colored_colones;
+	check_print(colones, index);
+	if(check_color(colones[index]))
+	{
+		colored_colones = ft_split(colones[index], ',');
+		line_in_map[index].color = atoi_hexa(colored_colones[1]);
+		if(ft_strncmp(colones[index], ",", 1) == 0)
+			line_in_map[index].z = 0;
+		else
+		line_in_map[index].z = ft_atoi(colored_colones[0]);
+	}
+	else
+	{
+		if(ft_strncmp(colones[index], ",", 1) == 0)
+			line_in_map[index].z = 0;
+		else
+			line_in_map[index].z = ft_atoi(colones[index]);
+		line_in_map[index].color = atoi_hexa("0xFFFFFF");
+	}
+	free(colones[index]);
+}
+// tab and espace
+// system("leaks fdf");
 // norme 
-// system function
+// bonus part

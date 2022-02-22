@@ -6,14 +6,14 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/18 18:33:31 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:41:34 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 /*-----------------------------------*/
-void	check_function(fdf_var *vars)
+void	check_function(t_fdf_var *vars)
 {
 	int	y;
 	int	x;
@@ -39,7 +39,7 @@ void	check_function(fdf_var *vars)
 }
 
 /*------------------------------------------------------*/
-void	check_index1(int x, int y, fdf_var *vars)
+void	check_index1(int x, int y, t_fdf_var *vars)
 {
 	vars->x1 = x;
 	vars->y1 = y;
@@ -50,7 +50,7 @@ void	check_index1(int x, int y, fdf_var *vars)
 }
 
 /*------------------------------------------------------*/
-void	check_index2(int x, int y, fdf_var *vars)
+void	check_index2(int x, int y, t_fdf_var *vars)
 {
 	vars->x1 = x;
 	vars->y1 = y;
@@ -61,7 +61,7 @@ void	check_index2(int x, int y, fdf_var *vars)
 }
 
 /*------------------------------------------------------*/
-void	dda_function(fdf_var *vars)
+void	dda_function(t_fdf_var *vars)
 {
 	int		color;
 	float	steps;

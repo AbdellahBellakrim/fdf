@@ -6,15 +6,15 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:27:21 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/21 20:39:33 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:43:13 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 /*-----------------------------------------------------------*/
-void	draw_function(fdf_var *vars)
+void	draw_function(t_fdf_var *vars)
 {
-	vars->ptr = (mlx *)malloc(sizeof(mlx));
+	vars->ptr = (t_mlx *)malloc(sizeof(t_mlx));
 	if (!vars->ptr)
 	{
 		perror ("somthing is wrong");
@@ -32,11 +32,12 @@ void	draw_function(fdf_var *vars)
 	mlx_put_image_to_window (vars->ptr->mlx_ptr, vars->ptr->window_ptr, \
 	vars->ptr->image_ptr, 0, 0);
 	mlx_hook (vars->ptr->window_ptr, 2, 1L << 0, esc, vars);
+	mlx_hook (vars->ptr->window_ptr, 17, 1L << 0, close_cross, vars);
 	mlx_loop (vars->ptr->mlx_ptr);
 }
 
 /*------------------------------------------------------------------*/
-void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color)
+void	my_mlx_pixel_put(float x1, float y1, t_fdf_var *vars, int color)
 {
 	char	*dst;
 
@@ -50,7 +51,7 @@ void	my_mlx_pixel_put(float x1, float y1, fdf_var *vars, int color)
 }
 
 /*-------------------------------------------------------------*/
-void	isometrie(fdf_var *vars)
+void	isometrie(t_fdf_var *vars)
 {
 	int	z1;
 	int	z2;
@@ -65,7 +66,7 @@ void	isometrie(fdf_var *vars)
 }
 
 /*----------------------------------------------------------------*/
-void	centrage(fdf_var *vars)
+void	centrage(t_fdf_var *vars)
 {
 	int diametre;
 
@@ -75,7 +76,7 @@ void	centrage(fdf_var *vars)
 }
 
 /*-----------------------------------------------------------------*/
-void	zoom(fdf_var *vars)
+void	zoom(t_fdf_var *vars)
 {
 	int diamtre_map;
 	float zoom;
@@ -98,7 +99,7 @@ void	zoom(fdf_var *vars)
 }
 
 /*----------------------------------------------------------------*/
-int	esc(int keycode, fdf_var *number)
+int	esc(int keycode, t_fdf_var *number)
 {
 	if(keycode == 53)
 	{
@@ -107,4 +108,10 @@ int	esc(int keycode, fdf_var *number)
 		exit(0);
 	}
 	return(0);
+}
+/*----------------------------------------------------------------*/
+int close_cross(void *param)
+{
+	(void)param;
+    exit(0);
 }

@@ -6,13 +6,13 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:28:46 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/21 20:40:00 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:41:05 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 /*------------------------------------------------------*/
-void	check_args(int ac, char **av, fdf_var *number)
+void	check_args(int ac, char **av, t_fdf_var *number)
 {
 	if (ac == 2)
 	{
@@ -61,12 +61,11 @@ void	check_print(char **colones, int index)
 		}
 }
 /*------------------------------------------------------*/
-void	check_map(fdf_var *number, int index)
+void	check_map(t_fdf_var *number, int index)
 {
 	if(index  < number->colones)
 	{
 		free_function(index, number->data_map);
-		//system("leaks fdf");
 		perror("oops invalid map short or long line");
 		exit(0);
 	}
