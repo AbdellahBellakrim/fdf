@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/22 16:57:03 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:21:39 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,3 @@ void	split_cas_color(int index, char **colones, t_map *line_in_map)
 	}
 	free (colones[index]);
 }
-// tab and espace
-// system("leaks fdf");
-// norme 
-// bonus part
