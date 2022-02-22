@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:27:21 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/22 17:37:13 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:48:49 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 void	draw_function(t_fdf_var *vars)
 {
 	vars->ptr = (t_mlx *)malloc(sizeof(t_mlx));
-
 	if (!vars->ptr)
 	{
 		perror ("somthing is wrong");
