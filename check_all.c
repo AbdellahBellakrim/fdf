@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:28:46 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/22 12:41:05 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:02:08 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,48 +39,51 @@ void	check_extension(char *fname)
 
 	i = 0;
 	str = fname;
-	while(i < ft_strlen(fname) - 4)
+	while (i < ft_strlen(fname) - 4)
 	{
 		str++;
 		i++;
 	}
-	if(ft_strncmp(str, ".fdf", 4))
+	if (ft_strncmp(str, ".fdf", 4))
 	{
 		perror("oops wrong file extention");
 		exit(0);
 	}
 }
+
 /*------------------------------------------------------*/
 void	check_print(char **colones, int index)
 {
-		if(ft_isprint(colones[index][0]) <= 0)
-		{
-			free_function2(index, colones);
-			perror("oops invalid map");
-			exit(0);
-		}
+	if (ft_isprint(colones[index][0]) <= 0)
+	{
+		free_function2(index, colones);
+		perror ("oops invalid map");
+		exit (0);
+	}
 }
+
 /*------------------------------------------------------*/
 void	check_map(t_fdf_var *number, int index)
 {
-	if(index  < number->colones)
+	if (index < number->colones)
 	{
-		free_function(index, number->data_map);
-		perror("oops invalid map short or long line");
-		exit(0);
+		free_function (index, number->data_map);
+		perror ("oops invalid map short or long line");
+		exit (0);
 	}
 }
+
 /*-----------------------------------------------------*/
-int check_color(char *str)
+int	check_color(char *str)
 {
-	int index;
+	int	index;
 
 	index = 0;
-	while(str[index++])
+	while (str[index++])
 	{
-		if(ft_strchr(str, ','))
-			return(1);
+		if (ft_strchr(str, ','))
+			return (1);
 		index++;
 	}
-	return(0);
+	return (0);
 }

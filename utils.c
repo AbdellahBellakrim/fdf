@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 19:31:10 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/22 13:42:43 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 16:43:53 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line[0] = 0;
 	i = 0;
-	while ((n = read(fd, buff, 1)) && (n > 0))
+	n = read(fd, buff, 1);
+	while (n > 0)
 	{
+		n = read(fd, buff, 1);
 		line[i++] = buff[0];
 		line[i] = '\0';
 		if (buff[0] == '\n')
@@ -66,18 +68,19 @@ int	atoi_hexa(char *number)
 
 	sum = 0;
 	if (number == NULL)
-		return(0);
+		return (0);
 	if (ft_strncmp(number, "0x", 2) >= 0 || ft_strncmp(number, "0X", 2) >= 0)
 		sum = handle_cases_atoh(sum, number);
 	else
-		return(ft_atoi(number));
+		return (ft_atoi(number));
 	return (sum);
 }
+
 /*---------------------------------------*/
 int	handle_cases_atoh(int sum, char *number)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 7;
 	j = 0;
@@ -92,5 +95,5 @@ int	handle_cases_atoh(int sum, char *number)
 		i--;
 		j++;
 	}
-	return(sum);
+	return (sum);
 }

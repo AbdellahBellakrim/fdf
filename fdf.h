@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/22 13:42:26 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/22 16:59:15 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,5 @@ void	check_print(char **colones, int index);
 void	check_map(t_fdf_var *number, int index);
 int		close_cross(void *param);
 void	split_cas_color(int index, char **colones, t_map *line_in_map);
-int	handle_cases_atoh(int sum, char *number);
+int		handle_cases_atoh(int sum, char *number);
 #endif
