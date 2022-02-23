@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:28:46 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/23 21:32:09 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/24 00:17:39 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ void	check_print(char **colones, int index)
 }
 
 /*------------------------------------------------------*/
-void	check_map(t_fdf_var *number, int index)
+void	check_map(t_fdf_var *number, int index, char **colones)
 {
-	if (index < number->colones)
+	if (index < number->colones || colones[0] == NULL)
 	{
-		perror ("oops invalid map short or long line");
+		perror ("oops invalid map");
 		exit (0);
 	}
 }

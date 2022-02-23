@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/23 21:32:18 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/24 00:15:23 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,16 @@ int	colone_nb(char *line)
 {
 	char	**colones;
 	int		index;
+	char	*str;
 
 	index = 0;
-	line = ft_strtrim(line, "\n");
-	line = ft_strtrim(line, " ");
+	str = ft_strtrim(line, "\n");
+	line = ft_strtrim(str, " ");
 	colones = ft_split(line, ' ');
 	while (colones[index] != NULL)
 		index++;
+	free(line);
+	free(str);
 	free_function2 (index, colones);
 	return (index);
 }
@@ -60,7 +63,8 @@ void	read_line(char *line, t_map *line_in_map, t_fdf_var *number)
 		check_print(colones, index);
 		split_cas_color(index, colones, line_in_map);
 	}
-	check_map(number, index);
+	check_map(number, index, colones);
+	free(line);
 	free (colones);
 }
 
@@ -112,9 +116,7 @@ void	store_map(int fd, char *fname, t_map **map_variables, t_fdf_var *number)
 	map_variables[index] = NULL;
 	close (fd);
 }
-//is printibale probleme
-//line too long prblm
+//leaks
 //zoom
 //centrage
 //norme
-//leaks
