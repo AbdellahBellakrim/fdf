@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 19:31:10 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/22 16:43:53 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/23 21:56:36 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ char	*get_next_line(int fd)
 	n = read(fd, buff, 1);
 	while (n > 0)
 	{
-		n = read(fd, buff, 1);
 		line[i++] = buff[0];
 		line[i] = '\0';
 		if (buff[0] == '\n')
 			return (ft_strdup2(line));
+		n = read(fd, buff, 1);
 	}
 	if (!line[0])
 		return (NULL);
@@ -82,18 +82,22 @@ int	handle_cases_atoh(int sum, char *number)
 	int	i;
 	int	j;
 
-	i = 7;
 	j = 0;
+	if (ft_strlen(number) > 8)
+		i = 7;
+	else
+		i = ft_strlen(number) - 1;
 	while (i > 1)
 	{
 		if (number[i] >= 'A' && number[i] <= 'F')
 			sum = sum + (number[i] - 55) * pow(16, j);
-		else if (number[i] >= 'a' && number[i] <= 'f')
+		if (number[i] >= 'a' && number[i] <= 'f')
 			sum = sum + (number[i] - 87) * pow(16, j);
-		else if (number[i] >= '0' && number[i] <= '9')
+		if (number[i] >= '0' && number[i] <= '9')
 			sum = sum + (number[i] - 48) * pow(16, j);
 		i--;
 		j++;
 	}
 	return (sum);
 }
+//0x FFFFFF

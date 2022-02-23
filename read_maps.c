@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/22 18:21:39 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/23 21:32:18 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	colone_nb(char *line)
 	int		index;
 
 	index = 0;
+	line = ft_strtrim(line, "\n");
+	line = ft_strtrim(line, " ");
 	colones = ft_split(line, ' ');
 	while (colones[index] != NULL)
 		index++;
@@ -51,36 +53,15 @@ void	read_line(char *line, t_map *line_in_map, t_fdf_var *number)
 	char	**colones;
 
 	index = -1;
+	line = ft_strtrim(line, "\n");
 	colones = ft_split(line, ' ');
 	while (colones[++index])
+	{
+		check_print(colones, index);
 		split_cas_color(index, colones, line_in_map);
+	}
 	check_map(number, index);
 	free (colones);
-}
-
-/*-----------------------------------------------------------*/
-void	store_map(int fd, char *fname, t_map **map_variables, t_fdf_var *number)
-{
-	int		index;
-	char	*line;
-
-	fd = open(fname, O_RDONLY);
-	if (fd < 0 || read(fd, 0, 1) == 0)
-	{
-		perror ("somtthing is wrong");
-		exit (0);
-	}
-	index = 0;
-	line = get_next_line(fd);
-	while (line)
-	{
-		read_line(line, map_variables[index], number);
-		free (line);
-		line = get_next_line(fd);
-		index++;
-	}
-	map_variables[index] = NULL;
-	close (fd);
 }
 
 /*------------------------------------------------------------------*/
@@ -88,7 +69,6 @@ void	split_cas_color(int index, char **colones, t_map *line_in_map)
 {
 	char	**colored_colones;
 
-	check_print(colones, index);
 	if (check_color(colones[index]))
 	{
 		colored_colones = ft_split(colones[index], ',');
@@ -108,3 +88,33 @@ void	split_cas_color(int index, char **colones, t_map *line_in_map)
 	}
 	free (colones[index]);
 }
+
+/*-----------------------------------------------------------*/
+void	store_map(int fd, char *fname, t_map **map_variables, t_fdf_var *number)
+{
+	int		index;
+	char	*line;
+
+	fd = open(fname, O_RDONLY);
+	if (fd < 0 || read(fd, 0, 1) == 0)
+	{
+		perror ("somtthing is wrong");
+		exit (0);
+	}
+	index = 0;
+	while (index < number->lines)
+	{
+		line = get_next_line(fd);
+		read_line(line, map_variables[index], number);
+		free (line);
+		index++;
+	}
+	map_variables[index] = NULL;
+	close (fd);
+}
+//is printibale probleme
+//line too long prblm
+//zoom
+//centrage
+//norme
+//leaks

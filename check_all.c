@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:28:46 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/22 18:21:03 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/23 21:32:09 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,8 @@ void	check_extension(char *fname)
 /*------------------------------------------------------*/
 void	check_print(char **colones, int index)
 {
-	if (ft_isprint(colones[index][0]) <= 0)
+	if (ft_isprint(colones[index][0]) == 0)
 	{
-		free_function2(index, colones);
 		perror ("oops invalid map");
 		exit (0);
 	}
