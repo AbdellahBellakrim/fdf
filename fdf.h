@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/23 23:43:10 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:15:27 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <math.h>
 # include "./libft/libft.h"
 
-# define HEIGH 1080
-# define WEIGHT 1820
+// # define HEIGH 1080
+// # define WEIGHT 1820
 
 typedef struct map
 {
@@ -46,6 +46,9 @@ typedef struct fdf_var
 	float	x_offset;
 	float	y_offset;
 	float	zoom;
+	float	my_zoom;
+	float	weight;
+	float	height;
 	int		z_offset;
 	int		lines;
 	int		colones;
@@ -80,7 +83,6 @@ void	isometrie(t_fdf_var *vars);
 void	my_mlx_pixel_put(float x1, float y1, t_fdf_var *vars, int color);
 void	check_args(int ac, char **av, t_fdf_var *number);
 void	centrage(t_fdf_var *vars);
-void	zoom(t_fdf_var *vars);
 int		esc(int keycode, t_fdf_var *number);
 void	check_extension(char *fname);
 void	check_print(char **colones, int index);
@@ -88,4 +90,7 @@ void	check_map(t_fdf_var *number, int index, char **colones);
 int		close_cross(void *param);
 void	split_cas_color(int index, char **colones, t_map *line_in_map);
 int		handle_cases_atoh(int sum, char *number);
+void	my_zoom(t_fdf_var *vars);
+void	smooth_winddow(t_fdf_var *vars);
+void	zoom(t_fdf_var *vars);
 #endif

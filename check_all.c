@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:28:46 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/24 10:40:33 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/24 13:58:29 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	check_map(t_fdf_var *number, int index, char **colones)
 	if (index < number->colones || colones[0] == NULL)
 	{
 		perror ("oops invalid map");
-		system("leaks fdf");
 		exit (0);
 	}
 }

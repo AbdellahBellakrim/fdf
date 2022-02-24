@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 17:20:45 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/22 17:47:35 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/24 18:34:22 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,68 @@ void	centrage(t_fdf_var *vars)
 {
 	int	diametre;
 
-	diametre = sqrt(pow(WEIGHT, 2) + pow(HEIGH, 2));
-	vars->x_offset = WEIGHT - (diametre / 2.3);
-	vars->y_offset = (diametre * 230) / HEIGH ;
+	diametre = sqrt(pow(vars->weight, 2) + pow(vars->height, 2));
+	if (diametre > 875)
+	{
+		vars->x_offset = vars->weight - (diametre / 2.3);
+		vars->y_offset = (diametre * 230) / vars->height ;
+	}
+	else
+	{
+		vars->x_offset = vars->weight / 2;
+		vars->y_offset = diametre / 1.8;
+	}
 }
 
 /*-----------------------------------------------------------------*/
-void	zoom(t_fdf_var *vars)
+void	my_zoom(t_fdf_var *vars)
 {
 	int		diamtre_map;
-	float	zoom;
 
 	diamtre_map = sqrt(pow(vars->colones, 2) + pow(vars->lines, 2));
 	if (vars->zoom == 1)
 	{
 		if (diamtre_map < 100)
-			zoom = 25;
+			vars->my_zoom = 25;
 		else if (diamtre_map > 100 && diamtre_map < 250)
-			zoom = 3;
+			vars->my_zoom = 3;
 		else
-			zoom = 2;
+			vars->my_zoom = 2;
 	}
 	else
-		zoom = vars->zoom;
-	vars->x1 *= zoom;
-	vars->y1 *= zoom;
-	vars->x2 *= zoom;
-	vars->y2 *= zoom;
+		vars->my_zoom = vars->zoom;
 }
+
+/*-----------------------------------------------------------------*/
+void	smooth_winddow(t_fdf_var *vars)
+{
+	int	x;
+	int	y;
+
+	x = sin(1) - cos(0.523599);
+	y = cos(0.523599);
+	
+	
+}
+
+// /*-----------------------------------------------------------------*/
+void	zoom(t_fdf_var *vars)
+{
+	vars->x1 *= vars->my_zoom;
+	vars->y1 *= vars->my_zoom;
+	vars->x2 *= vars->my_zoom;
+	vars->y2 *= vars->my_zoom;
+}
+
+	// int		diamtre_map;
+
+	// diamtre_map = sqrt(pow(vars->colones, 2) + pow(vars->lines, 2));
+	// vars->weight = diamtre_map * vars->my_zoom * 1.5;
+	// if (diamtre_map < 100 && diamtre_map > 70)
+	// {
+	// 	vars->height = diamtre_map * vars->my_zoom * 2.5;
+	// }
+	// else if (diamtre_map > 100 && diamtre_map < 250)
+	// 	vars->height = diamtre_map * vars->my_zoom * 1.5;
+	// else
+	// 	vars->height = diamtre_map * vars->my_zoom;8
