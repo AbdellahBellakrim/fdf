@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/24 00:15:23 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:01:19 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	read_line(char *line, t_map *line_in_map, t_fdf_var *number)
 	}
 	check_map(number, index, colones);
 	free(line);
-	free (colones);
+	free(colones);
 }
 
 /*------------------------------------------------------------------*/
@@ -80,7 +80,10 @@ void	split_cas_color(int index, char **colones, t_map *line_in_map)
 		if (ft_strncmp(colones[index], ",", 1) == 0)
 			line_in_map[index].z = 0;
 		else
-		line_in_map[index].z = ft_atoi(colored_colones[0]);
+			line_in_map[index].z = ft_atoi(colored_colones[0]);
+		free(colored_colones[0]);
+		free(colored_colones[1]);
+		free(colored_colones);
 	}
 	else
 	{
@@ -116,7 +119,3 @@ void	store_map(int fd, char *fname, t_map **map_variables, t_fdf_var *number)
 	map_variables[index] = NULL;
 	close (fd);
 }
-//leaks
-//zoom
-//centrage
-//norme

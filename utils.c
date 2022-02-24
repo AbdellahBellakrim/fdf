@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 19:31:10 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/23 23:21:18 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/24 11:34:09 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	atoi_hexa(char *number)
 	sum = 0;
 	if (number == NULL)
 		return (0);
-	if (ft_strncmp(number, "0x", 2) >= 0 || ft_strncmp(number, "0X", 2) >= 0)
+	if (ft_strncmp(number, "0x", 2) == 0 || ft_strncmp(number, "0X", 2) == 0)
 		sum = handle_cases_atoh(sum, number);
 	else
 		return (ft_atoi(number));

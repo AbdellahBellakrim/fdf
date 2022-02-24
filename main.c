@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/22 16:58:56 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:02:10 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,8 @@ int	main(int ac, char **av)
 	store_map (fd, av[1], number->data_map, number);
 	draw_function (number);
 }
+//zoom
+//centrage
+// window
+// header between bonus part and mandatory part
+//start bonus part
