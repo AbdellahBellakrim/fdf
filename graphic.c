@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:27:21 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/24 14:13:42 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/25 16:05:41 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ void	draw_function(t_fdf_var *vars)
 	}
 	vars->ptr->mlx_ptr = mlx_init();
 	my_zoom(vars);
-	smooth_winddow(vars);
 	vars->ptr->window_ptr = \
-	mlx_new_window (vars->ptr->mlx_ptr, vars->weight, vars->height, "fdf");
+	mlx_new_window (vars->ptr->mlx_ptr, WEIGHT, HEIGH, "fdf");
 	vars->ptr->image_ptr = \
-	mlx_new_image(vars->ptr->mlx_ptr, vars->weight, vars->height);
+	mlx_new_image(vars->ptr->mlx_ptr, WEIGHT, HEIGH);
 	vars->ptr->buffer = \
 	mlx_get_data_addr (vars->ptr->image_ptr, &vars->ptr->bpp, \
 	&vars->ptr->line_lenght, &vars->ptr->endian);
@@ -44,8 +43,8 @@ void	my_mlx_pixel_put(float x1, float y1, t_fdf_var *vars, int color)
 {
 	char	*dst;
 
-	if (((int)x1 >= 0 && (int)x1 < vars->weight) && \
-	((int)y1 >= 0 && (int)y1 < vars->height))
+	if (((int)x1 >= 0 && (int)x1 < WEIGHT) && \
+	((int)y1 >= 0 && (int)y1 < HEIGH))
 	{
 		dst = vars->ptr->buffer + ((int)y1 * vars->ptr->line_lenght \
 		+ (int )x1 * (vars->ptr->bpp / 8));

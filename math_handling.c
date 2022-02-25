@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 17:20:45 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/24 18:34:22 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/25 16:05:02 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void	centrage(t_fdf_var *vars)
 {
 	int	diametre;
 
-	diametre = sqrt(pow(vars->weight, 2) + pow(vars->height, 2));
+	diametre = sqrt(pow(WEIGHT, 2) + pow(HEIGH, 2));
 	if (diametre > 875)
 	{
-		vars->x_offset = vars->weight - (diametre / 2.3);
-		vars->y_offset = (diametre * 230) / vars->height ;
+		vars->x_offset = WEIGHT - (diametre / 2.3);
+		vars->y_offset = (diametre * 230) / HEIGH ;
 	}
 	else
 	{
-		vars->x_offset = vars->weight / 2;
+		vars->x_offset = WEIGHT / 2;
 		vars->y_offset = diametre / 1.8;
 	}
 }
@@ -63,18 +63,6 @@ void	my_zoom(t_fdf_var *vars)
 		vars->my_zoom = vars->zoom;
 }
 
-/*-----------------------------------------------------------------*/
-void	smooth_winddow(t_fdf_var *vars)
-{
-	int	x;
-	int	y;
-
-	x = sin(1) - cos(0.523599);
-	y = cos(0.523599);
-	
-	
-}
-
 // /*-----------------------------------------------------------------*/
 void	zoom(t_fdf_var *vars)
 {
@@ -83,16 +71,3 @@ void	zoom(t_fdf_var *vars)
 	vars->x2 *= vars->my_zoom;
 	vars->y2 *= vars->my_zoom;
 }
-
-	// int		diamtre_map;
-
-	// diamtre_map = sqrt(pow(vars->colones, 2) + pow(vars->lines, 2));
-	// vars->weight = diamtre_map * vars->my_zoom * 1.5;
-	// if (diamtre_map < 100 && diamtre_map > 70)
-	// {
-	// 	vars->height = diamtre_map * vars->my_zoom * 2.5;
-	// }
-	// else if (diamtre_map > 100 && diamtre_map < 250)
-	// 	vars->height = diamtre_map * vars->my_zoom * 1.5;
-	// else
-	// 	vars->height = diamtre_map * vars->my_zoom;8
