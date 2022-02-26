@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_all.c                                        :+:      :+:    :+:   */
+/*   check_all_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:28:46 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 13:58:57 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/26 14:27:28 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 /*------------------------------------------------------*/
-void	check_args(int ac, char **av, t_fdf_var *number)
+void	check_args_bonus(int ac, char **av, t_fdf_var *number)
 {
 	if (ac == 2)
 	{
@@ -32,7 +32,7 @@ void	check_args(int ac, char **av, t_fdf_var *number)
 }
 
 /*------------------------------------------------------*/
-void	check_extension(char *fname)
+void	check_extension_bonus(char *fname)
 {
 	unsigned long	i;
 	char			*str;
@@ -52,7 +52,7 @@ void	check_extension(char *fname)
 }
 
 /*------------------------------------------------------*/
-void	check_print(char **colones, int index)
+void	check_print_bonus(char **colones, int index)
 {
 	if (ft_isprint(colones[index][0]) == 0)
 	{
@@ -62,7 +62,7 @@ void	check_print(char **colones, int index)
 }
 
 /*------------------------------------------------------*/
-void	check_map(t_fdf_var *number, int index, char **colones)
+void	check_map_bonus(t_fdf_var *number, int index, char **colones)
 {
 	if (index < number->colones || colones[0] == NULL)
 	{
@@ -72,7 +72,7 @@ void	check_map(t_fdf_var *number, int index, char **colones)
 }
 
 /*-----------------------------------------------------*/
-int	check_color(char *str)
+int	check_color_bonus(char *str)
 {
 	int	index;
 

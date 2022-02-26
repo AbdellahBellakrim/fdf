@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/25 16:03:49 by abellakr         ###   ########.fr       */
+/*   Created: 2022/02/26 13:45:22 by abellakr          #+#    #+#             */
+/*   Updated: 2022/02/26 17:54:48 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,3 @@ int	main(int ac, char **av)
 	store_map (fd, av[1], number->data_map, number);
 	draw_function (number);
 }
-//------------------------->start bonus part : 
-// extra projection
-// zoom in zoom out
-// traslation
-// rotation 
-// more extra bonus : color play with z and write in the window
-// ---------------------->review all: leaks - erros - norme 

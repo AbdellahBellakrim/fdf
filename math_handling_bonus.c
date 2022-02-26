@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math_handling.c                                    :+:      :+:    :+:   */
+/*   math_handling_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 17:20:45 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 13:58:30 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/26 14:32:17 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 /*-------------------------------------------------------------*/
-void	isometrie(t_fdf_var *vars)
+void	isometrie_bonus(t_fdf_var *vars)
 {
 	int	z1;
 	int	z2;
@@ -27,7 +27,7 @@ void	isometrie(t_fdf_var *vars)
 }
 
 /*----------------------------------------------------------------*/
-void	centrage(t_fdf_var *vars)
+void	centrage_bonus(t_fdf_var *vars)
 {
 	int	diametre;
 
@@ -45,7 +45,7 @@ void	centrage(t_fdf_var *vars)
 }
 
 /*-----------------------------------------------------------------*/
-void	my_zoom(t_fdf_var *vars)
+void	my_zoom_bonus(t_fdf_var *vars)
 {
 	int		diamtre_map;
 
@@ -64,7 +64,7 @@ void	my_zoom(t_fdf_var *vars)
 }
 
 // /*-----------------------------------------------------------------*/
-void	zoom(t_fdf_var *vars)
+void	zoom_bonus(t_fdf_var *vars)
 {
 	vars->x1 *= vars->my_zoom;
 	vars->y1 *= vars->my_zoom;

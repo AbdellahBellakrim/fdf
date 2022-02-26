@@ -8,9 +8,9 @@
 			"type": "lldb",
 			"request": "launch",
 			"name": "Debug",
-			"program": "/Users/abellakr/Desktop/my fdf v2/fdf",
+			"program": "/Users/abellakr/Desktop/fdf/fdf",
 			"args": "test_maps/42.fdf",
-			"cwd": "/Users/abellakr/Desktop/my fdf v2"
+			"cwd": "/Users/abellakr/Desktop/fdf"
 		}
 	]
 }

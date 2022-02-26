@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 21:30:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/19 12:51:15 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/25 21:21:09 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include<stddef.h>
 # include<stdlib.h>
 # include<unistd.h>
-# include "../fdf.h"
 //is func
 int		ft_isalnum(int str);
 int		ft_isalpha(int str);
