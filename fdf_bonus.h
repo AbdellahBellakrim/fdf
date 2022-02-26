@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 20:28:12 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/26 21:28:48 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct fdf_var
 	int		colones;
 	float	x_offset;
 	float	y_offset;
+	float	x_translation;
+	float	y_translation;
 	float	z_offset;
 	float	my_zoom;
 	float	zoom;

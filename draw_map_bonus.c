@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 20:18:19 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/26 21:30:16 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	dda_function_bonus(t_fdf_var *vars)
 	dy /= steps;
 	while ((int)(vars->x1 - vars->x2) || (int)(vars->y1 - vars->y2))
 	{
-		my_mlx_pixel_put_bonus(vars->x1 + vars->x_offset, vars->y1 + vars->y_offset \
-		, vars, color);
+		my_mlx_pixel_put_bonus(vars->x1 + vars->x_offset + vars->x_translation,\
+		 vars->y1 + vars->y_offset + vars->y_translation, vars, color);
 		vars->x1 += dx;
 		vars->y1 += dy;
 	}

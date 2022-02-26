@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 20:39:49 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 20:45:41 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/26 21:37:03 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	key_z(int keycode, t_fdf_var *number)
 void	key_translation(int keycode, t_fdf_var *number)
 {
 	if (keycode == 126)
-		number->y_offset /= 0.1;
+		number->y_translation -= 50;
 	if (keycode == 125)
-		number->y_offset *= 0.1;
+		number->y_translation += 50;
 	if (keycode == 124)
-		number->x_offset *= 0.1;
+		number->x_translation += 50;
 	if (keycode == 123)
-		number->x_offset /= 0.1;
+		number->x_translation -= 50;
 // traslation up : 126
 // traslation down : 125
 // traslation right : 124
