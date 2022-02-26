@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 20:39:49 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 21:37:03 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/26 23:39:10 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,14 @@ void	key_translation(int keycode, t_fdf_var *number)
 // traslation down : 125
 // traslation right : 124
 // traslation left : 123
+}
+/*----------------------------------------------------------------*/
+void	parallel_vue(int keycode, t_fdf_var *number)
+{
+	if(keycode == 35)
+		number->check_isometrie = 1;
+	if(keycode == 46)
+		number->check_isometrie = 0;
+// parallel p 35
+// isometrie m 46
 }

@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 21:30:16 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/26 23:39:23 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	dda_function_bonus(t_fdf_var *vars)
 	float	dy;
 
 	color = vars->data_map[(int)vars->y1][(int)vars->x1].color;
-	isometrie_bonus(vars);
+	if(vars->check_isometrie == 0)
+		isometrie_bonus(vars);
 	centrage_bonus(vars);
 	zoom_bonus(vars);
 	dx = vars->x2 - vars->x1;
