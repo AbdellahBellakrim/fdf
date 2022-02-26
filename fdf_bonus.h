@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 17:54:59 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/26 20:28:12 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ typedef struct mlx
 
 typedef struct fdf_var
 {
-	float	x_offset;
-	float	y_offset;
-	float	zoom;
-	float	my_zoom;
-	int		z_offset;
 	int		lines;
 	int		colones;
+	float	x_offset;
+	float	y_offset;
+	float	z_offset;
+	float	my_zoom;
+	float	zoom;
 	float	x1;
 	float	y1;
 	float	x2;
@@ -92,6 +92,7 @@ void	zoom_bonus(t_fdf_var *vars);
 int		keyboard_bonus(int key, t_fdf_var *number);
 void	esc(int keycode, t_fdf_var *number);
 void	key_zoom(int keycode, t_fdf_var *number);
+void	key_z(int keycode, t_fdf_var *number);
 void	key_translation(int keycode, t_fdf_var *number);
 
 #endif

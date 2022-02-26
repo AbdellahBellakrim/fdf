@@ -6,7 +6,7 @@
 #    By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 16:10:17 by abellakr          #+#    #+#              #
-#    Updated: 2022/02/26 04:39:25 by abellakr         ###   ########.fr        #
+#    Updated: 2022/02/26 20:42:28 by abellakr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ FRAMEWORKS = -lmlx -framework OpenGL -framework AppKit
 SRC = fdf.c read_maps.c utils.c draw_map.c graphic.c check_all.c free_leaks.c \
 	math_handling.c
 B_SRC = fdf_bonus.c read_maps_bonus.c utils_bonus.c draw_map_bonus.c graphic_bonus.c check_all_bonus.c free_leaks_bonus.c \
-	math_handling_bonus.c
+	math_handling_bonus.c mlx_hooks_bonus.c
 OBJ = $(SRC:.c=.o)
 B_OBJ = $(B_SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 17:23:53 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/26 20:19:34 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ int	main(int ac, char **av)
 	draw_function_bonus (number);
 }
 //------------------------->start bonus part : 
-//  :extra projection
-//  :traslation
-//  : rotation 
-//  : more extra bonus : color play with z and write in the window
+//  2 :extra projection
+//  1 :traslation
+//  4 : rotation 
 // ---------------------->review all: leaks - erros - norme 
