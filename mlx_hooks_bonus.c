@@ -27,18 +27,18 @@ void	esc(int keycode, t_fdf_var *number)
 void	key_zoom(int keycode, t_fdf_var *number)
 {
 	if (keycode == 34)
-		number->my_zoom += 0.8;
+		number->my_zoom += 0.1;
 	if (keycode == 31)
-		number->my_zoom -= 0.8;
+		number->my_zoom -= 0.1;
 }
 
 /*----------------------------------------------------------------*/
 void	key_z(int keycode, t_fdf_var *number)
 {
 	if (keycode == 69)
-		number->z_offset += 0.3;
+		number->z_offset += 0.2;
 	if (keycode == 78)
-		number->z_offset -= 0.3;
+		number->z_offset -= 0.2;
 }
 
 /*----------------------------------------------------------------*/

@@ -15,18 +15,15 @@
 /*-------------------------------------------------------------*/
 void	isometrie_bonus(t_fdf_var *vars)
 {
-	int	z1;
-	int	z2;
-
+	vars->z1 = vars->z1 * vars->z_offset;
+	vars->z2 = vars->z2 * vars->z_offset;
 	rotation_bonus(vars);
 	if (vars->check_isometrie == 0)
 	{
-		z1 = vars->z1 * vars->z_offset;
-		z2 = vars->z2 * vars->z_offset;
 		vars->x1 = (vars->x1 - vars->y1) * cos(0.523599);
-		vars->y1 = (vars->x1 + vars->y1) * sin(0.523599) - z1;
+		vars->y1 = (vars->x1 + vars->y1) * sin(0.523599) - vars->z1;
 		vars->x2 = (vars->x2 - vars->y2) * cos(0.523599);
-		vars->y2 = (vars->x2 + vars->y2) * sin(0.523599) - z2;
+		vars->y2 = (vars->x2 + vars->y2) * sin(0.523599) - vars->z2;
 	}
 }
 
@@ -79,7 +76,7 @@ void	zoom_bonus(t_fdf_var *vars)
 /*------------------------------------------------------*/
 void	rotation_bonus(t_fdf_var *vars)
 {
-	rotation_x(vars);
-	rotation_y(vars);
-	rotation_z(vars);
+		rotation_x(vars);
+		rotation_y(vars);
+		rotation_z(vars);
 }
