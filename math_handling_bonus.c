@@ -76,7 +76,7 @@ void	zoom_bonus(t_fdf_var *vars)
 /*------------------------------------------------------*/
 void	rotation_bonus(t_fdf_var *vars)
 {
-		rotation_x(vars);
-		rotation_y(vars);
-		rotation_z(vars);
+	rotation_x(vars);
+	rotation_y(vars);
+	rotation_z(vars);
 }
