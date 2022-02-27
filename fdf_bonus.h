@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 03:15:25 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 12:58:46 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,8 @@ void	parallel_vue(int keycode, t_fdf_var *number);
 void	rotation_bonus(t_fdf_var *vars);
 void	rotation_key(int keycode, t_fdf_var *number);
 void	write_in_the_window(t_fdf_var *vars);
+void	handle_bonus_points(t_fdf_var *vars);
+void	rotaion_z(t_fdf_var *vars);
+void	rotation_y(t_fdf_var *vars);
+void	rotation_x(t_fdf_var *vars);
 #endif

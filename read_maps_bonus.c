@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:19:19 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 14:34:27 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 03:48:06 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ void	split_cas_color_bonus(int index, char **colones, t_map *line_in_map)
 }
 
 /*-----------------------------------------------------------*/
-void	store_map_bonus(int fd, char *fname, t_map **map_variables, t_fdf_var *number)
+void	store_map_bonus(int fd, char *fname, t_map **map_variables, \
+t_fdf_var *number)
 {
 	int		index;
 	char	*line;

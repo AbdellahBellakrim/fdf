@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 02:54:44 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 12:42:42 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	check_function_bonus(t_fdf_var *vars)
 			}
 		}
 	}
-	mlx_put_image_to_window (vars->ptr->mlx_ptr, vars->ptr->window_ptr, vars->ptr->image_ptr, 0, 0);
-	write_in_the_window(vars);	
+	mlx_put_image_to_window (vars->ptr->mlx_ptr, vars->ptr->window_ptr, \
+	vars->ptr->image_ptr, 0, 0);
+	write_in_the_window (vars);
 }
 
 /*------------------------------------------------------*/
@@ -71,11 +72,7 @@ void	dda_function_bonus(t_fdf_var *vars)
 	float	dy;
 
 	color = vars->data_map[(int)vars->y1][(int)vars->x1].color;
-	if(vars->check_isometrie == 0)
-		isometrie_bonus(vars);
-	centrage_bonus(vars);
-	zoom_bonus(vars);
-	rotation_bonus(vars);
+	handle_bonus_points(vars);
 	dx = vars->x2 - vars->x1;
 	dy = vars->y2 - vars->y1;
 	if (fabsf(dx) > fabsf(dy))
@@ -86,9 +83,19 @@ void	dda_function_bonus(t_fdf_var *vars)
 	dy /= steps;
 	while ((int)(vars->x1 - vars->x2) || (int)(vars->y1 - vars->y2))
 	{
-		my_mlx_pixel_put_bonus(vars->x1 + vars->x_offset + vars->x_translation,\
-		 vars->y1 + vars->y_offset + vars->y_translation, vars, color);
+		my_mlx_pixel_put_bonus(vars->x1 + vars->x_offset + vars->x_translation, \
+		vars->y1 + vars->y_offset + vars->y_translation, vars, color);
 		vars->x1 += dx;
 		vars->y1 += dy;
 	}
+}
+
+/*------------------------------------------------------*/
+void	handle_bonus_points(t_fdf_var *vars)
+{
+	if (vars->check_isometrie == 0)
+		isometrie_bonus(vars);
+	centrage_bonus(vars);
+	zoom_bonus(vars);
+	rotation_bonus(vars);
 }

@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 17:20:45 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 03:18:10 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 13:00:28 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,31 +71,11 @@ void	zoom_bonus(t_fdf_var *vars)
 	vars->x2 *= vars->my_zoom;
 	vars->y2 *= vars->my_zoom;
 }
+
 /*------------------------------------------------------*/
 void	rotation_bonus(t_fdf_var *vars)
 {
-	if(vars->x == 1)
-	{
-		vars->y1 = vars->y1 * cos(0.523599 + vars->o) + vars->z1 * sin(0.523599 + vars->o);
-		vars->z1 = -vars->y1 * sin(0.523599 + vars->o) + vars->z1 * cos(0.523599 + vars->o);
-		
-		vars->y2 = vars->y2 * cos(0.523599 + vars->o) + vars->z2 * sin(0.523599 + vars->o);
-		vars->z2 = -vars->y2 * sin(0.523599 + vars->o) + vars->z2 * cos(0.523599 + vars->o);
-	}
-	if(vars->y == 1)
-	{
-		vars->x1 = vars->x1 * cos(0.523599 + vars->o) + vars->z1 * sin(0.523599 + vars->o);
-		vars->z1 = -vars->x1 * sin(0.523599 + vars->o) + vars->z1 * cos(0.523599 + vars->o);
-		
-		vars->x2 = vars->x2 * cos(0.523599 + vars->o) + vars->z2 * sin(0.523599 + vars->o);
-		vars->z2 = -vars->x2 * sin(0.523599 + vars->o) + vars->z2 * cos(0.523599 + vars->o);
-	}
-	if(vars->z == 1)
-	{
-		vars->x1 = vars->x1 * cos(0.523599 + vars->o) - vars->y1 * sin(0.523599 + vars->o);
-		vars->y1 = vars->x1 * sin(0.523599 + vars->o) - vars->y1 * cos(0.523599 + vars->o);
-	
-		vars->x2 = vars->x2 * cos(0.523599 + vars->o) - vars->y2 * sin(0.523599 + vars->o);
-		vars->y2 = vars->x2 * sin(0.523599 + vars->o) - vars->y2 * cos(0.523599 + vars->o);
-	}
+	rotation_x(vars);
+	rotation_y(vars);
+	rotation_y(vars);
 }
