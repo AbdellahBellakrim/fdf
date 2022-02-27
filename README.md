@@ -32,6 +32,6 @@ For example, the map
 ```
 will represented as
 
-![screenshot of sample](Screen Shot 2022-02-27 at 9.07.56 PM.png)
+![screenshot of sample](https://github.com/heybellakrim/fdf/blob/d3d20fceba1e3935ed3fef5bb3d7daaf2cc750c7/Screen%20Shot%202022-02-27%20at%209.07.56%20PM.png)
 
 Sample maps are located in the directory `test_maps` in project path.
