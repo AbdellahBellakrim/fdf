@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 20:39:49 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 13:08:30 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 14:12:25 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	key_zoom(int keycode, t_fdf_var *number)
 void	key_z(int keycode, t_fdf_var *number)
 {
 	if (keycode == 69)
-		number->z_offset += 0.1;
+		number->z_offset += 0.3;
 	if (keycode == 78)
-		number->z_offset -= 0.1;
+		number->z_offset -= 0.3;
 }
 
 /*----------------------------------------------------------------*/

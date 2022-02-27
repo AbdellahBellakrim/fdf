@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 02:09:30 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 13:09:59 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,3 @@ int	main(int ac, char **av)
 	store_map_bonus (fd, av[1], number->data_map, number);
 	draw_function_bonus (number);
 }
-//------------------------->start bonus part : 
-// 4 : colors , string
-// ---------------------->review all: leaks - erros - norme 

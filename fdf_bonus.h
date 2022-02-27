@@ -106,7 +106,7 @@ void	rotation_bonus(t_fdf_var *vars);
 void	rotation_key(int keycode, t_fdf_var *number);
 void	write_in_the_window(t_fdf_var *vars);
 void	handle_bonus_points(t_fdf_var *vars);
-void	rotaion_z(t_fdf_var *vars);
+void	rotation_z(t_fdf_var *vars);
 void	rotation_y(t_fdf_var *vars);
 void	rotation_x(t_fdf_var *vars);
 #endif

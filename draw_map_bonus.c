@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 12:42:42 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 13:35:44 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,7 @@ void	dda_function_bonus(t_fdf_var *vars)
 /*------------------------------------------------------*/
 void	handle_bonus_points(t_fdf_var *vars)
 {
-	if (vars->check_isometrie == 0)
-		isometrie_bonus(vars);
-	centrage_bonus(vars);
 	zoom_bonus(vars);
-	rotation_bonus(vars);
+	centrage_bonus(vars);
+	isometrie_bonus(vars);
 }

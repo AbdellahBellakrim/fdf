@@ -39,17 +39,23 @@ void	rotation_key(int keycode, t_fdf_var *number)
 {
 	if (keycode == 7)
 	{
+		number->y = 0;
+		number->z = 0;
 		number->x = 1;
 		number->o += 0.4;
 	}
 	if (keycode == 16)
 	{
-		number->y = 1;
+		number->x = 0;
+		number->z = 0;
+		number->y = 2;
 		number->o += 0.4;
 	}
 	if (keycode == 6)
 	{
-		number->z = 1;
+		number->x = 0;
+		number->y = 0;
+		number->z = 3;
 		number->o += 0.4;
 	}
 }
