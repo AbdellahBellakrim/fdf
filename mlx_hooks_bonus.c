@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 20:39:49 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 23:39:10 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 02:08:01 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,26 @@ void	parallel_vue(int keycode, t_fdf_var *number)
 		number->check_isometrie = 0;
 // parallel p 35
 // isometrie m 46
+}
+/*----------------------------------------------------------------*/
+void	rotation_key(int keycode, t_fdf_var *number)
+{
+	if (keycode == 7)
+	{
+		number->X = 1;
+		number->O += 0.4;
+	}
+	if (keycode == 16)
+	{
+		number->Y = 1;
+		number->O += 0.4;
+	}
+	if (keycode == 6)
+	{
+		number->Z = 1;
+		number->O += 0.4;
+	}
+	//x : 7
+	//y : 16
+	// z : 6
 }

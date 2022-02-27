@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 17:20:45 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 14:32:17 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 02:03:01 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,45 @@ void	my_zoom_bonus(t_fdf_var *vars)
 		vars->my_zoom = vars->zoom;
 }
 
-// /*-----------------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
 void	zoom_bonus(t_fdf_var *vars)
 {
 	vars->x1 *= vars->my_zoom;
 	vars->y1 *= vars->my_zoom;
 	vars->x2 *= vars->my_zoom;
 	vars->y2 *= vars->my_zoom;
+}
+/*------------------------------------------------------*/
+void	rotation_bonus(t_fdf_var *vars)
+{
+	if(vars->X == 1)
+	{
+		vars->x1 = vars->x1;
+		vars->y1 = vars->y1 * cos(0.523599 + vars->O) + vars->z1 * sin(0.523599 + vars->O);
+		vars->z1 = -vars->y1 * sin(0.523599 + vars->O) + vars->z1 * cos(0.523599 + vars->O);
+		
+		vars->x2 = vars->x2;
+		vars->y2 = vars->y2 * cos(0.523599 + vars->O) + vars->z2 * sin(0.523599 + vars->O);
+		vars->z2 = -vars->y2 * sin(0.523599 + vars->O) + vars->z2 * cos(0.523599 + vars->O);
+	}
+	if(vars->Y == 1)
+	{
+		vars->y1 = vars->y1;
+		vars->x1 = vars->x1 * cos(0.523599 + vars->O) + vars->z1 * sin(0.523599 + vars->O);
+		vars->z1 = -vars->x1 * sin(0.523599 + vars->O) + vars->z1 * cos(0.523599 + vars->O);
+		
+		vars->y2 = vars->y2;
+		vars->x2 = vars->x2 * cos(0.523599 + vars->O) + vars->z2 * sin(0.523599 + vars->O);
+		vars->z2 = -vars->x2 * sin(0.523599 + vars->O) + vars->z2 * cos(0.523599 + vars->O);
+	}
+	if(vars->Z == 1)
+	{
+		vars->z1 = vars->z1;
+		vars->x1 = vars->x1 * cos(0.523599 + vars->O) - vars->y1 * sin(0.523599 + vars->O);
+		vars->y1 = vars->x1 * sin(0.523599 + vars->O) - vars->y1 * cos(0.523599 + vars->O);
+		
+		vars->z2 = vars->z2;
+		vars->x2 = vars->x2 * cos(0.523599 + vars->O) - vars->y2 * sin(0.523599 + vars->O);
+		vars->y2 = vars->x2 * sin(0.523599 + vars->O) - vars->y2 * cos(0.523599 + vars->O);
+	}
 }

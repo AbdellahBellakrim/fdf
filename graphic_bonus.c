@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:27:21 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 00:12:23 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 01:47:09 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	keyboard_bonus(int key, t_fdf_var *number)
 	key_z(key, number);
 	key_translation(key ,number);
 	parallel_vue(key, number);
+	rotation_key(key, number);
 	mlx_destroy_image(number->ptr->mlx_ptr, number->ptr->image_ptr);
 	 number->ptr->image_ptr = mlx_new_image(number->ptr->mlx_ptr, WEIGHT, HEIGH);
 	check_function_bonus(number);

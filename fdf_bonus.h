@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 23:38:29 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 02:04:20 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ typedef struct fdf_var
 	int		z1;
 	int		z2;
 	int		check_isometrie;
+	int		X;
+	int		Y;
+	int		Z;
+	float	O;
 	t_map	**data_map;
 	t_mlx	*ptr;
 }	t_fdf_var;
@@ -98,4 +102,6 @@ void	key_zoom(int keycode, t_fdf_var *number);
 void	key_z(int keycode, t_fdf_var *number);
 void	key_translation(int keycode, t_fdf_var *number);
 void	parallel_vue(int keycode, t_fdf_var *number);
+void	rotation_bonus(t_fdf_var *vars);
+void	rotation_key(int keycode, t_fdf_var *number);
 #endif

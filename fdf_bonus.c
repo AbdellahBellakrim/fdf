@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:54:42 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 23:40:38 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 02:09:30 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ int	main(int ac, char **av)
 	draw_function_bonus (number);
 }
 //------------------------->start bonus part : 
-//  3 : rotation 
 // 4 : colors , string
 // ---------------------->review all: leaks - erros - norme 
