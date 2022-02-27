@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 02:30:48 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 03:15:25 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ typedef struct fdf_var
 	int		z1;
 	int		z2;
 	int		check_isometrie;
-	int		X;
-	int		Y;
-	int		Z;
-	float	O;
+	int		x;
+	int		y;
+	int		z;
+	float	o;
 	t_map	**data_map;
 	t_mlx	*ptr;
 }	t_fdf_var;

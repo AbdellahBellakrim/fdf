@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 20:39:49 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 03:11:42 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 03:15:58 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,18 @@ void	rotation_key(int keycode, t_fdf_var *number)
 {
 	if (keycode == 7)
 	{
-		number->X = 1;
-		number->O += 0.4;
+		number->x = 1;
+		number->o += 0.4;
 	}
 	if (keycode == 16)
 	{
-		number->Y = 1;
-		number->O += 0.4;
+		number->y = 1;
+		number->o += 0.4;
 	}
 	if (keycode == 6)
 	{
-		number->Z = 1;
-		number->O += 0.4;
+		number->z = 1;
+		number->o += 0.4;
 	}
 	//x : 7
 	//y : 16
