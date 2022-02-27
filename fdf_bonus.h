@@ -59,7 +59,6 @@ typedef struct fdf_var
 	int		z1;
 	int		z2;
 	int		check_isometrie;
-	int		check_rotation;
 	int		x;
 	int		y;
 	int		z;
