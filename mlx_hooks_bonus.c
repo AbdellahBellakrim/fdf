@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 20:39:49 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 02:08:01 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 03:11:42 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,16 @@ void	rotation_key(int keycode, t_fdf_var *number)
 	//x : 7
 	//y : 16
 	// z : 6
+}
+/*----------------------------------------------------------------*/
+void	write_in_the_window(t_fdf_var *vars)
+{
+	mlx_string_put (vars->ptr->mlx_ptr, vars->ptr->window_ptr, 20, 20, 11268396, "click \
+	I : ZOOM IN | O : ZOOM OUT");
+	mlx_string_put (vars->ptr->mlx_ptr, vars->ptr->window_ptr, 30, 100, 11268396, "X | Y | Z : rotation");
+	mlx_string_put (vars->ptr->mlx_ptr, vars->ptr->window_ptr, 30, 40, 11268396, "+ - : ALTITUDE");
+	mlx_string_put (vars->ptr->mlx_ptr, vars->ptr->window_ptr, 30, 80, 11268396, "P & M : parallel_vue");
+	mlx_string_put (vars->ptr->mlx_ptr, vars->ptr->window_ptr, 30, 60, 11268396, "ARROWS : TRANSLATION");
+	mlx_string_put (vars->ptr->mlx_ptr, vars->ptr->window_ptr, 20, 1020, 11268396, "made by heybellakrim <3");
+
 }

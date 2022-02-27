@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:27:21 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 01:47:09 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 02:54:37 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	draw_function_bonus(t_fdf_var *vars)
 	vars->ptr->image_ptr = mlx_new_image(vars->ptr->mlx_ptr, WEIGHT, HEIGH);
 	vars->ptr->buffer = mlx_get_data_addr (vars->ptr->image_ptr, &vars->ptr->bpp, &vars->ptr->line_lenght, &vars->ptr->endian);
 	check_function_bonus(vars);
-	mlx_put_image_to_window (vars->ptr->mlx_ptr, vars->ptr->window_ptr, vars->ptr->image_ptr, 0, 0);
 	mlx_hook (vars->ptr->window_ptr, 2, 1L << 0, keyboard_bonus, vars);
 	mlx_hook (vars->ptr->window_ptr, 17, 1L << 0, close_cross_bonus, vars);
 	mlx_loop (vars->ptr->mlx_ptr);
@@ -47,6 +46,7 @@ int	keyboard_bonus(int key, t_fdf_var *number)
 	 number->ptr->image_ptr = mlx_new_image(number->ptr->mlx_ptr, WEIGHT, HEIGH);
 	check_function_bonus(number);
 	mlx_put_image_to_window (number->ptr->mlx_ptr, number->ptr->window_ptr, number->ptr->image_ptr, 0, 0);
+	write_in_the_window(number);	
 	return (0);
 }
 /*----------------------------------------------------------------*/

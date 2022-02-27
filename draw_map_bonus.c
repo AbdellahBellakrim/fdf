@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:48:34 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 01:48:45 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 02:54:44 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	check_function_bonus(t_fdf_var *vars)
 			}
 		}
 	}
+	mlx_put_image_to_window (vars->ptr->mlx_ptr, vars->ptr->window_ptr, vars->ptr->image_ptr, 0, 0);
+	write_in_the_window(vars);	
 }
 
 /*------------------------------------------------------*/

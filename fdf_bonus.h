@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:16:24 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/27 02:04:20 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/02/27 02:30:48 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,5 @@ void	key_translation(int keycode, t_fdf_var *number);
 void	parallel_vue(int keycode, t_fdf_var *number);
 void	rotation_bonus(t_fdf_var *vars);
 void	rotation_key(int keycode, t_fdf_var *number);
+void	write_in_the_window(t_fdf_var *vars);
 #endif
