@@ -6,7 +6,7 @@
 #    By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 16:10:17 by abellakr          #+#    #+#              #
-#    Updated: 2022/02/27 13:06:24 by abellakr         ###   ########.fr        #
+#    Updated: 2022/02/28 15:41:47 by abellakr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ OBJ = $(SRC:.c=.o)
 B_OBJ = $(B_SRC:.c=.o)
 
 all : $(NAME)
-
+%.o:%.c
+	$(CC) $(CFlAGS) -c $<
 $(NAME) : $(OBJ)
 	@echo " \
 			──────────────────────────────────────────────\n\
@@ -44,7 +45,7 @@ $(NAME) : $(OBJ)
 			─██░░██─────────██░░░░░░░░████─██░░██─────────\n\
 			─██████─────────████████████───██████─────────\n\
 			────────────────────────────────────────────── \n"
-	@rm -rf $(B_OBJ) $(NAME)
+	@rm -rf $(B_OBJ)
 	@make -C ./libft
 	@$(CC) $(CFlAGS) $(FRAMEWORKS) $(OBJ) ./libft/libft.a -o $(NAME) 
 	
@@ -63,9 +64,9 @@ bonus : $(B_OBJ)
 			─██░░██─────────██░░░░░░░░████─██░░██─────────\n\
 			─██████─────────████████████───██████─────────\n\
 			────────────────────────────────────────────── \n"
-	@rm -rf $(OBJ) $(NAME)
+	@rm -rf $(OBJ)
 	@make -C ./libft
-	@$(CC) $(CFlAGS) $(FRAMEWORKS) $(B_SRC) ./libft/libft.a -o $(NAME) -g
+	@$(CC) $(CFlAGS) $(FRAMEWORKS) $(B_OBJ) ./libft/libft.a -o $(NAME)
 	
 fclean : clean
 
