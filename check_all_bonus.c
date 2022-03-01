@@ -6,7 +6,7 @@
 /*   By: abellakr <abellakr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:28:46 by abellakr          #+#    #+#             */
-/*   Updated: 2022/02/26 14:27:28 by abellakr         ###   ########.fr       */
+/*   Updated: 2022/03/01 11:00:33 by abellakr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void	check_extension_bonus(char *fname)
 
 	i = 0;
 	str = fname;
+	if (ft_strlen(fname) < 5)
+	{
+		perror("oops somthing is wrong !");
+		exit(0);
+	}
 	while (i < ft_strlen(fname) - 4)
 	{
 		str++;
