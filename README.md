@@ -33,5 +33,6 @@ For example, the map
 will represented as
 
 ![screenshot of sample](https://github.com/heybellakrim/fdf/blob/d3d20fceba1e3935ed3fef5bb3d7daaf2cc750c7/Screen%20Shot%202022-02-27%20at%209.07.56%20PM.png)
+![screenshot of sample](https://github.com/heybellakrim/fdf/blob/38c68d20a1ccaab7332877a1a5bfeb2e067535f7/Screen%20Shot%202022-03-03%20at%206.10.02%20PM.png)
 
 Sample maps are located in the directory `test_maps` in project path.
