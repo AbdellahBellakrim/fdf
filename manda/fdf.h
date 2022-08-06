@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <math.h>
-# include "./libft/libft.h"
+# include "../libft/libft.h"
 
 # define HEIGH 1080
 # define WEIGHT 1820

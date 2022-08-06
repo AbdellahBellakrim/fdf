@@ -13,6 +13,7 @@
 
 
 NAME = fdf
+B_NAME = fdf_bonus
 
 CC = gcc
 
@@ -20,16 +21,16 @@ CFlAGS = -Wall -Wextra -Werror
 
 FRAMEWORKS = -lmlx -framework OpenGL -framework AppKit
 
-SRC = fdf.c read_maps.c utils.c draw_map.c graphic.c check_all.c free_leaks.c \
-	math_handling.c
-B_SRC = fdf_bonus.c read_maps_bonus.c utils_bonus.c draw_map_bonus.c graphic_bonus.c check_all_bonus.c free_leaks_bonus.c \
-	math_handling_bonus.c mlx_hooks_bonus.c rotation_bonus.c mlx_hooks_bonus2.c
+SRC = manda/fdf.c manda/read_maps.c manda/utils.c manda/draw_map.c manda/graphic.c manda/check_all.c manda/free_leaks.c \
+	manda/math_handling.c
+B_SRC = b/fdf_bonus.c b/read_maps_bonus.c b/utils_bonus.c b/draw_map_bonus.c b/graphic_bonus.c b/check_all_bonus.c b/free_leaks_bonus.c \
+	b/math_handling_bonus.c b/mlx_hooks_bonus.c b/rotation_bonus.c b/mlx_hooks_bonus2.c
 OBJ = $(SRC:.c=.o)
 B_OBJ = $(B_SRC:.c=.o)
 
+%.o: %.c
+	$(CC) $(CFlAGS) -c $< -o $@
 all : $(NAME)
-%.o:%.c
-	$(CC) $(CFlAGS) -c $<
 $(NAME) : $(OBJ)
 	@echo " \
 			──────────────────────────────────────────────\n\
@@ -66,11 +67,12 @@ bonus : $(B_OBJ)
 			────────────────────────────────────────────── \n"
 	@rm -rf $(OBJ)
 	@make -C ./libft
-	@$(CC) $(CFlAGS) $(FRAMEWORKS) $(B_OBJ) ./libft/libft.a -o $(NAME)
+	@$(CC) $(CFlAGS) $(FRAMEWORKS) $(B_OBJ) ./libft/libft.a -o $(B_NAME)
 	
 fclean : clean
 
 	@rm -rf $(NAME)
+	@rm -rf $(B_NAME)
 	@make fclean -C ./libft
 clean :
 	@rm -rf $(OBJ)
@@ -79,4 +81,4 @@ clean :
 	
 re : fclean all 
 	
-.PHONY : clean fclean all re
+.PHONY : clean fclean all re bonus
